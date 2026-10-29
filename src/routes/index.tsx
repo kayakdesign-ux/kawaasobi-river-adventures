@@ -35,7 +35,7 @@ function Index() {
         {/* アクセスマップ — 四国の地図と大豊IC */}
         <div className="pointer-events-none absolute left-4 top-16 z-20 w-36 md:left-10 md:w-64">
           <div className="rounded-[1.75rem] rounded-tr-md border border-primary-foreground/25 bg-primary-foreground/10 p-3 shadow-[0_10px_40px_oklch(0_0_0/0.35)] backdrop-blur-md md:rounded-[2.5rem] md:p-4">
-            <p className="font-display text-[10px] tracking-[0.45em] text-primary-foreground/85 md:text-xs">ACCESS — 四国</p>
+            <p className="whitespace-nowrap font-display text-[10px] tracking-[0.3em] text-primary-foreground/85 md:text-xs md:tracking-[0.45em]">ACCESS — 四国</p>
             <div className="relative mt-2">
               <img
                 src={shikokuMap.url}
@@ -123,7 +123,7 @@ function Index() {
           </a>
         </div>
 
-        <div className="pointer-events-none absolute left-10 top-[32%] z-[5] hidden -translate-y-1/2 text-primary-foreground md:block">
+        <div className="pointer-events-none absolute left-10 top-[32%] z-[5] hidden -translate-y-1/2 text-primary-foreground md:left-[22rem] md:block">
           <p className="font-display text-xs tracking-[0.5em] opacity-80">EMERALD RIVER</p>
           <h1 className="mt-2 font-display text-4xl [text-shadow:0_2px_20px_oklch(0_0_0/0.5)]">清流で、遊ぼう。</h1>
         </div>
