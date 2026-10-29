@@ -5,6 +5,7 @@ import shower from "@/assets/shower-climbing.jpg.asset.json";
 import touring from "@/assets/river-touring.jpg.asset.json";
 import packraft from "@/assets/packraft.jpg.asset.json";
 import packraftIllust from "@/assets/packraft-illust.jpg.asset.json";
+import kayakIllust from "@/assets/kayak-illust.png.asset.json";
 import shikokuMap from "@/assets/shikoku-map.png.asset.json";
 import illustPackraft from "@/assets/illust-packraft.png";
 import illustSup from "@/assets/illust-sup.png";
@@ -93,11 +94,17 @@ function Index() {
               <span className="text-base">パックラフト</span>
             </figcaption>
             <img src={packraft.url} alt="パックラフト" className="block aspect-[16/10] w-full object-cover" />
-            <div className="mt-2 flex items-center gap-3 rounded-xl bg-white/95 px-3 py-2 shadow-inner">
-              <img src={packraftIllust.url} alt="パックラフトのイラスト" loading="lazy" className="h-16 w-16 shrink-0 rounded-lg object-cover md:h-20 md:w-20" />
+            <div className="mt-2 flex items-center gap-2.5 rounded-xl bg-white/80 px-2.5 py-1.5 shadow-inner">
+              <img src={packraftIllust.url} alt="パックラフトのイラスト" loading="lazy" className="h-20 w-24 shrink-0 rounded-lg object-cover md:h-24 md:w-28" />
               <span className="font-['Zen_Maru_Gothic',sans-serif] text-sm font-bold leading-snug text-primary md:text-base">
                 初めてでも安定抜群！<br className="hidden md:block" />
                 パックラフト
+              </span>
+            </div>
+            <div className="mt-1.5 flex items-center gap-2.5 rounded-xl bg-white/80 px-2.5 py-1.5 shadow-inner">
+              <img src={kayakIllust.url} alt="カヤックのイラスト" loading="lazy" className="h-20 w-24 shrink-0 rounded-lg object-cover md:h-24 md:w-28" />
+              <span className="font-['Zen_Maru_Gothic',sans-serif] text-sm font-bold leading-snug text-primary md:text-base">
+                根強い人気のカヤック
               </span>
             </div>
           </figure>
