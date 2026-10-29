@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { AccessDialog } from "@/components/AccessDialog";
 import shower from "@/assets/shower-climbing.jpg.asset.json";
 import touring from "@/assets/river-touring.jpg.asset.json";
 import shikokuMap from "@/assets/shikoku-map.png.asset.json";
@@ -24,6 +26,7 @@ const WAVE_D =
   "M0,94.2 C3.7,76.9 16.1,61.2 27.2,61.2 C40.3,61.2 46.6,97.9 67.1,97.9 C80.1,97.9 88.5,95.1 93.2,93.7 C97.1,80.5 105.1,67.9 117.0,67.9 C130.8,67.9 142.5,94.6 164.2,94.6 C178.1,94.6 187.0,92.4 191.9,91.3 C196.6,81.4 207.8,69.5 221.8,69.5 C238.3,69.5 250.6,94.2 276.4,94.2 C292.8,94.2 303.4,92.1 309.3,91.1 C313.0,84.3 324.0,74.7 335.3,74.7 C348.4,74.7 356.2,94.1 376.9,94.1 C390.0,94.1 398.5,92.4 403.2,91.6 C407.0,82.3 418.7,71.1 430.2,71.1 C443.6,71.1 451.2,97.4 472.3,97.4 C485.7,97.4 494.4,95.4 499.2,94.4 C503.2,80.3 516.5,67.4 528.5,67.4 C542.5,67.4 549.2,96.0 571.3,96.0 C585.3,96.0 594.3,93.7 599.3,92.6 C602.5,82.1 615.2,70.8 624.7,70.8 C635.8,70.8 639.0,95.1 656.5,95.1 C667.6,95.1 674.8,93.1 678.7,92.1 C682.6,76.7 695.7,61.0 707.3,61.0 C720.8,61.0 726.9,97.4 748.0,97.4 C761.5,97.4 770.2,94.6 775.0,93.2 C779.1,83.5 789.6,73.4 801.9,73.4 C816.2,73.4 826.1,94.9 848.6,94.9 C863.0,94.9 872.2,93.1 877.3,92.2 C881.7,86.0 894.1,77.8 907.4,77.8 C922.9,77.8 932.6,97.1 957.0,97.1 C972.5,97.1 982.4,95.6 988.0,94.9 C990.9,78.2 1002.7,63.7 1011.6,63.7 C1022.1,63.7 1025.4,95.5 1041.8,95.5 C1052.3,95.5 1059.0,93.0 1062.8,91.7 C1066.2,78.2 1074.5,63.7 1084.7,63.7 C1096.7,63.7 1105.5,94.0 1124.3,94.0 C1136.3,94.0 1144.0,91.4 1148.3,90.1 C1151.3,77.6 1163.1,62.5 1172.1,62.5 C1182.5,62.5 1185.6,95.9 1202.0,95.9 C1212.5,95.9 1219.2,93.2 1222.9,91.9 C1227.4,82.7 1241.9,71.9 1255.3,71.9 C1270.9,71.9 1278.7,94.3 1303.2,94.3 C1318.8,94.3 1328.9,92.4 1334.4,91.4 C1338.7,78.9 1347.8,64.9 1360.5,64.9 C1375.3,64.9 1387.2,95.1 1410.4,95.1 C1425.2,95.1 1434.7,92.6 1440.0,91.4";
 
 function Index() {
+  const [accessOpen, setAccessOpen] = useState(false);
   return (
     <main className="bg-background">
       <section className="relative h-screen min-h-[640px] overflow-hidden">
@@ -33,7 +36,7 @@ function Index() {
         </header>
 
         {/* アクセスマップ — 四国の地図と大豊IC */}
-        <div className="pointer-events-none absolute left-4 top-16 z-20 w-36 md:left-10 md:w-64">
+        <button type="button" onClick={() => setAccessOpen(true)} aria-label="アクセス情報とルートを開く" className="group/map absolute left-4 top-16 z-20 w-36 cursor-pointer text-left transition hover:-translate-y-0.5 md:left-10 md:w-64">
           <div className="rounded-[1.75rem] rounded-tr-md border border-primary-foreground/25 bg-primary-foreground/10 p-3 shadow-[0_10px_40px_oklch(0_0_0/0.35)] backdrop-blur-md md:rounded-[2.5rem] md:p-4">
             <p className="whitespace-nowrap font-display text-[10px] tracking-[0.3em] text-primary-foreground/85 md:text-xs md:tracking-[0.45em]">ACCESS — 四国</p>
             <div className="relative mt-2">
@@ -50,8 +53,10 @@ function Index() {
                 </span>
               </div>
             </div>
+            <p className="mt-2 text-center text-[10px] tracking-widest text-primary-foreground/80 group-hover/map:text-accent md:text-xs">タップでアクセス・ルート →</p>
           </div>
-        </div>
+        </button>
+        <AccessDialog open={accessOpen} onOpenChange={setAccessOpen} />
 
         {/* 1.5kmツーリング — 上3分の3 */}
         <a
