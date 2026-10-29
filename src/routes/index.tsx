@@ -3,6 +3,7 @@ import { useState } from "react";
 import { AccessDialog } from "@/components/AccessDialog";
 import shower from "@/assets/shower-climbing.jpg.asset.json";
 import touring from "@/assets/river-touring.jpg.asset.json";
+import packraft from "@/assets/packraft.jpg.asset.json";
 import shikokuMap from "@/assets/shikoku-map.png.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -71,6 +72,12 @@ function Index() {
             className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-[image:var(--hero-overlay)]" />
+          <figure className="absolute right-[6%] top-1/2 z-20 hidden w-[30%] max-w-[520px] -translate-y-1/2 border-2 border-primary-foreground/80 p-2 shadow-2xl md:block">
+            <figcaption className="absolute -top-3 left-6 bg-primary px-3 font-display text-sm tracking-widest text-primary-foreground">
+              パックラフト
+            </figcaption>
+            <img src={packraft.url} alt="パックラフト" className="block aspect-[16/10] w-full object-cover" />
+          </figure>
           <div className="relative z-10 flex h-full flex-col justify-end p-6 pb-24 text-primary-foreground md:p-12 md:pb-24">
             <span className="font-display text-sm tracking-[0.3em] text-accent">02 — 1.5KM RIVER TOURING</span>
             <h2 className="mt-3 font-display text-4xl leading-tight md:text-7xl">1.5kmツーリング</h2>
