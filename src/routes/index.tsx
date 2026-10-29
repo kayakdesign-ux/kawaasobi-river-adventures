@@ -27,9 +27,9 @@ function Index() {
   return (
     <main className="bg-background">
       <section className="relative h-screen min-h-[640px] overflow-hidden">
-        <header className="absolute inset-x-0 top-0 z-20 flex items-center justify-between px-6 py-5 text-primary-foreground md:px-10">
-          <span className="font-display text-2xl tracking-widest">高知県の川遊び<span className="ml-2 text-xs opacity-80">KAWAASOBI.COM</span></span>
-          <a href="#reserve" className="rounded-full border border-primary-foreground/60 px-5 py-2 text-sm backdrop-blur-sm transition hover:bg-primary-foreground hover:text-primary">ご予約</a>
+        <header className="absolute inset-x-0 top-0 z-20 flex items-center justify-between gap-2 px-4 py-4 text-primary-foreground md:px-10 md:py-5">
+          <span className="whitespace-nowrap font-display text-lg tracking-widest md:text-2xl">高知県の川遊び<span className="ml-1 text-[10px] opacity-80 md:ml-2 md:text-xs">KAWAASOBI.COM</span></span>
+          <a href="#reserve" className="whitespace-nowrap rounded-full border border-primary-foreground/60 px-3 py-2 text-sm backdrop-blur-sm transition hover:bg-primary-foreground hover:text-primary md:px-5">ご予約</a>
         </header>
 
         {/* アクセスマップ — 四国の地図と大豊IC */}
@@ -42,14 +42,11 @@ function Index() {
                 alt="四国の地図。大豊ICの位置に☆印"
                 className="w-full opacity-95 drop-shadow-[0_4px_18px_oklch(0_0_0/0.35)]"
               />
-              {/* 大豊IC — ☆マーカー（地図のピン位置に重ねる） */}
-              <div className="absolute left-[57.6%] top-[39.8%] -translate-x-1/2 -translate-y-[88%]">
+              {/* 大豊IC — ☆マーカー（ラベルの「IC」の位置に重ねる） */}
+              <div className="absolute left-[58.1%] top-[37.8%] -translate-x-1/2 -translate-y-1/2">
                 <span className="relative block text-center">
                   <span className="map-marker-ping absolute left-1/2 top-1/2 -z-10 h-8 w-8 -translate-x-1/2 -translate-y-1/2 rounded-full border border-accent/70 bg-accent/30" />
                   <span className="text-2xl leading-none text-accent [text-shadow:0_0_8px_oklch(0.35_0.08_175/0.9),0_1px_3px_oklch(0_0_0/0.6)] md:text-3xl">☆</span>
-                </span>
-                <span className="mt-1 block -translate-x-1/3 rounded-full bg-primary-foreground px-2 py-0.5 text-center text-[10px] font-medium text-primary md:text-xs">
-                  大豊IC
                 </span>
               </div>
             </div>
