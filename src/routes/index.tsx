@@ -31,39 +31,6 @@ const boatStroke = {
   strokeLinejoin: "round" as const,
 };
 
-// 境の瀬に浮かぶディフォルメ線画アイコン（カヤック / サップ / パックラフト）
-function KayakIcon() {
-  return (
-    <svg viewBox="0 0 72 40" className="h-auto w-10 md:w-16" aria-hidden="true">
-      <path d="M3 28 C8 21 16 18 26 18 L46 18 C55 18 63 21 69 28 C62 32 54 34 46 34 L26 34 C18 34 10 32 3 28 Z" {...boatStroke} />
-      <path d="M28 18 C31 15 41 15 44 18" {...boatStroke} />
-      <path d="M14 4 L52 10" {...boatStroke} className="text-accent" />
-      <path d="M14 4 C9 1 4 4 6 8 C8 11 13 9 14 4 Z" {...boatStroke} className="text-accent" />
-      <path d="M52 10 C57 7 62 10 60 14 C58 17 53 15 52 10 Z" {...boatStroke} className="text-accent" />
-    </svg>
-  );
-}
-
-function SupIcon() {
-  return (
-    <svg viewBox="0 0 72 40" className="h-auto w-10 md:w-16" aria-hidden="true">
-      <path d="M2 25 C7 21 13 19 20 19 L34 19 C41 19 46 21 50 25 C45 29 39 31 34 31 L20 31 C13 31 7 29 2 25 Z" {...boatStroke} />
-      <path d="M22 31 L25 36 L28 31" {...boatStroke} />
-      <path d="M68 4 L61 20" {...boatStroke} className="text-accent" />
-      <path d="M61 20 C55 21 54 28 60 29 C66 30 65 23 61 20 Z" {...boatStroke} className="text-accent" />
-    </svg>
-  );
-}
-
-function PackraftIcon() {
-  return (
-    <svg viewBox="0 0 72 40" className="h-auto w-10 md:w-16" aria-hidden="true">
-      <path d="M5 25 C6 16 13 11 24 10 L44 10 C55 11 62 15 66 24 C61 29 54 32 45 32 L25 32 C15 32 8 29 5 25 Z" {...boatStroke} />
-      <path d="M19 21 C23 17 31 16 39 16 C46 16 52 18 55 21" {...boatStroke} />
-      <path d="M33 16 C35 13 40 13 42 16" {...boatStroke} />
-    </svg>
-  );
-}
 
 function Index() {
   return (
@@ -144,24 +111,6 @@ function Index() {
             <path d={WAVE_MOBILE_D} className="md:hidden" fill="none" stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke" />
             <path d={WAVE_D} className="hidden md:block" fill="none" stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke" />
           </svg>
-          {/* 境の瀬の波線上に浮かぶボートのアイコン */}
-          <div className="pointer-events-none absolute inset-x-0 top-0 z-[5]" aria-hidden="true">
-            <span className="absolute left-[30%] top-[19%] -translate-y-full md:top-[16%]">
-              <span className="hero-boat-float block text-primary-foreground/90 drop-shadow-[0_2px_8px_oklch(0_0_0/0.35)]" style={{ animationDelay: "0.2s" }}>
-                <KayakIcon />
-              </span>
-            </span>
-            <span className="absolute left-[55%] top-[19%] -translate-y-full md:top-[17.5%]">
-              <span className="hero-boat-float block text-primary-foreground/90 drop-shadow-[0_2px_8px_oklch(0_0_0/0.35)]" style={{ animationDelay: "1.4s" }}>
-                <SupIcon />
-              </span>
-            </span>
-            <span className="absolute left-[80%] top-[18%] -translate-y-full md:top-[18%]">
-              <span className="hero-boat-float block text-primary-foreground/90 drop-shadow-[0_2px_8px_oklch(0_0_0/0.35)]" style={{ animationDelay: "2.6s" }}>
-                <PackraftIcon />
-              </span>
-            </span>
-          </div>
           <a
             href="#reserve"
             className="relative z-10 flex h-full flex-col justify-end p-5 pb-6 text-primary-foreground md:p-10 md:pb-8"
