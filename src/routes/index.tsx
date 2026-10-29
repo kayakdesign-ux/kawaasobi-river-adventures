@@ -95,14 +95,18 @@ function Index() {
             </figcaption>
             <img src={packraft.url} alt="パックラフト" className="block aspect-[16/10] w-full object-cover" />
             <div className="mt-2 flex items-center gap-2 rounded-lg bg-white/50 px-1.5 py-1">
-              <img src={packraftIllust.url} alt="パックラフトのイラスト" loading="lazy" className="h-28 w-32 shrink-0 rounded-lg object-cover md:h-32 md:w-40" />
+              <div className="h-20 w-24 shrink-0 overflow-hidden rounded-lg md:h-24 md:w-28">
+                <img src={packraftIllust.url} alt="パックラフトのイラスト" loading="lazy" className="h-full w-full scale-150 object-cover" />
+              </div>
               <span className="font-['Zen_Maru_Gothic',sans-serif] text-sm font-bold leading-snug text-primary md:text-base">
                 初めてでも安定抜群！<br className="hidden md:block" />
                 パックラフト
               </span>
             </div>
             <div className="mt-1 flex items-center gap-2 rounded-lg bg-white/50 px-1.5 py-1">
-              <img src={kayakIllust.url} alt="カヤックのイラスト" loading="lazy" className="h-28 w-32 shrink-0 rounded-lg object-cover md:h-32 md:w-40" />
+              <div className="h-20 w-24 shrink-0 overflow-hidden rounded-lg md:h-24 md:w-28">
+                <img src={kayakIllust.url} alt="カヤックのイラスト" loading="lazy" className="h-full w-full scale-150 object-cover" />
+              </div>
               <span className="font-['Zen_Maru_Gothic',sans-serif] text-sm font-bold leading-snug text-primary md:text-base">
                 根強い人気のカヤック
               </span>
