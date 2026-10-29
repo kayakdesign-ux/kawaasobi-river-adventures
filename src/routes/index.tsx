@@ -40,7 +40,7 @@ function Index() {
               <img
                 src={shikokuMap.url}
                 alt="四国の地図。大豊ICの位置に☆印"
-                className="w-full opacity-95 mix-blend-luminosity saturate-50"
+                className="w-full opacity-95 drop-shadow-[0_4px_18px_oklch(0_0_0/0.35)]"
               />
               {/* 大豊IC — ☆マーカー（地図のピン位置に重ねる） */}
               <div className="absolute left-[57.6%] top-[39.8%] -translate-x-1/2 -translate-y-[88%]">
