@@ -28,7 +28,7 @@ function Index() {
     <main className="bg-background">
       <section className="relative h-screen min-h-[640px] overflow-hidden">
         <header className="absolute inset-x-0 top-0 z-20 flex items-center justify-between px-6 py-5 text-primary-foreground md:px-10">
-          <span className="font-display text-2xl tracking-widest">川遊び<span className="ml-2 text-xs opacity-80">KAWAASOBI</span></span>
+          <span className="font-display text-2xl tracking-widest">高知県の川遊び<span className="ml-2 text-xs opacity-80">KAWAASOBI.COM</span></span>
           <a href="#reserve" className="rounded-full border border-primary-foreground/60 px-5 py-2 text-sm backdrop-blur-sm transition hover:bg-primary-foreground hover:text-primary">ご予約</a>
         </header>
 
