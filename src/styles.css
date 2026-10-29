@@ -145,3 +145,13 @@
     color: var(--color-foreground);
   }
 }
+
+/* 境の瀬: wavy top edge for the shower-climbing hero panel */
+.hero-wave-mask {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201440%20400'%20preserveAspectRatio='none'%3E%3Cpath%20fill='%23fff'%20d='M0,84%20C120,56%20240,48%20360,68%20480,88%20600,112%20720,92%20840,72%20960,52%201080,72%201200,92%201320,100%201440,76%20L1440,400%20L0,400%20Z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201440%20400'%20preserveAspectRatio='none'%3E%3Cpath%20fill='%23fff'%20d='M0,84%20C120,56%20240,48%20360,68%20480,88%20600,112%20720,92%20840,72%20960,52%201080,72%201200,92%201320,100%201440,76%20L1440,400%20L0,400%20Z'/%3E%3C/svg%3E");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
