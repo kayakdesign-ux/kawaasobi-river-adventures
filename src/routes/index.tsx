@@ -77,7 +77,8 @@ function Index() {
             preserveAspectRatio="none"
             aria-hidden="true"
           >
-            <path d={WAVE_D} fill="none" stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke" />
+            <path d={WAVE_MOBILE_D} className="md:hidden" fill="none" stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke" />
+            <path d={WAVE_D} className="hidden md:block" fill="none" stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke" />
           </svg>
           <a
             href="#reserve"
