@@ -23,6 +23,49 @@ const WAVE_MOBILE_D =
 const WAVE_D =
   "M0,94.2 C3.7,76.9 16.1,61.2 27.2,61.2 C40.3,61.2 46.6,97.9 67.1,97.9 C80.1,97.9 88.5,95.1 93.2,93.7 C97.1,80.5 105.1,67.9 117.0,67.9 C130.8,67.9 142.5,94.6 164.2,94.6 C178.1,94.6 187.0,92.4 191.9,91.3 C196.6,81.4 207.8,69.5 221.8,69.5 C238.3,69.5 250.6,94.2 276.4,94.2 C292.8,94.2 303.4,92.1 309.3,91.1 C313.0,84.3 324.0,74.7 335.3,74.7 C348.4,74.7 356.2,94.1 376.9,94.1 C390.0,94.1 398.5,92.4 403.2,91.6 C407.0,82.3 418.7,71.1 430.2,71.1 C443.6,71.1 451.2,97.4 472.3,97.4 C485.7,97.4 494.4,95.4 499.2,94.4 C503.2,80.3 516.5,67.4 528.5,67.4 C542.5,67.4 549.2,96.0 571.3,96.0 C585.3,96.0 594.3,93.7 599.3,92.6 C602.5,82.1 615.2,70.8 624.7,70.8 C635.8,70.8 639.0,95.1 656.5,95.1 C667.6,95.1 674.8,93.1 678.7,92.1 C682.6,76.7 695.7,61.0 707.3,61.0 C720.8,61.0 726.9,97.4 748.0,97.4 C761.5,97.4 770.2,94.6 775.0,93.2 C779.1,83.5 789.6,73.4 801.9,73.4 C816.2,73.4 826.1,94.9 848.6,94.9 C863.0,94.9 872.2,93.1 877.3,92.2 C881.7,86.0 894.1,77.8 907.4,77.8 C922.9,77.8 932.6,97.1 957.0,97.1 C972.5,97.1 982.4,95.6 988.0,94.9 C990.9,78.2 1002.7,63.7 1011.6,63.7 C1022.1,63.7 1025.4,95.5 1041.8,95.5 C1052.3,95.5 1059.0,93.0 1062.8,91.7 C1066.2,78.2 1074.5,63.7 1084.7,63.7 C1096.7,63.7 1105.5,94.0 1124.3,94.0 C1136.3,94.0 1144.0,91.4 1148.3,90.1 C1151.3,77.6 1163.1,62.5 1172.1,62.5 C1182.5,62.5 1185.6,95.9 1202.0,95.9 C1212.5,95.9 1219.2,93.2 1222.9,91.9 C1227.4,82.7 1241.9,71.9 1255.3,71.9 C1270.9,71.9 1278.7,94.3 1303.2,94.3 C1318.8,94.3 1328.9,92.4 1334.4,91.4 C1338.7,78.9 1347.8,64.9 1360.5,64.9 C1375.3,64.9 1387.2,95.1 1410.4,95.1 C1425.2,95.1 1434.7,92.6 1440.0,91.4";
 
+const boatStroke = {
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 3,
+  strokeLinecap: "round" as const,
+  strokeLinejoin: "round" as const,
+};
+
+// 境の瀬に浮かぶディフォルメ線画アイコン（カヤック / サップ / パックラフト）
+function KayakIcon() {
+  return (
+    <svg viewBox="0 0 72 40" className="h-auto w-12 md:w-20" aria-hidden="true">
+      <path d="M3 28 C8 21 16 18 26 18 L46 18 C55 18 63 21 69 28 C62 32 54 34 46 34 L26 34 C18 34 10 32 3 28 Z" {...boatStroke} />
+      <path d="M28 18 C31 15 41 15 44 18" {...boatStroke} />
+      <path d="M12 5 L58 14" {...boatStroke} className="text-accent" />
+      <path d="M12 5 C7 2 2 5 4 9 C6 12 11 10 12 5 Z" {...boatStroke} className="text-accent" />
+      <path d="M58 14 C63 11 68 14 66 18 C64 21 59 19 58 14 Z" {...boatStroke} className="text-accent" />
+    </svg>
+  );
+}
+
+function SupIcon() {
+  return (
+    <svg viewBox="0 0 72 40" className="h-auto w-12 md:w-20" aria-hidden="true">
+      <path d="M3 25 C8 21 15 19 24 19 L48 19 C57 19 64 21 69 25 C63 29 56 31 48 31 L24 31 C15 31 8 29 3 25 Z" {...boatStroke} />
+      <path d="M32 31 L35 36 L38 31" {...boatStroke} />
+      <path d="M12 6 L58 13" {...boatStroke} className="text-accent" />
+      <path d="M12 6 C7 3 2 6 4 10 C6 13 11 11 12 6 Z" {...boatStroke} className="text-accent" />
+      <path d="M58 13 C63 10 68 13 66 17 C64 20 59 18 58 13 Z" {...boatStroke} className="text-accent" />
+    </svg>
+  );
+}
+
+function PackraftIcon() {
+  return (
+    <svg viewBox="0 0 72 40" className="h-auto w-12 md:w-20" aria-hidden="true">
+      <path d="M4 25 C6 17 12 12 22 11 L46 11 C56 12 62 16 66 24 C60 29 53 31 45 31 L24 31 C15 31 8 29 4 25 Z" {...boatStroke} />
+      <path d="M13 21 C19 17 27 16 35 16 L41 16 C47 17 52 19 55 21" {...boatStroke} />
+      <path d="M30 16 C32 13 38 13 40 16" {...boatStroke} />
+    </svg>
+  );
+}
+
 function Index() {
   return (
     <main className="bg-background">
@@ -102,6 +145,24 @@ function Index() {
             <path d={WAVE_MOBILE_D} className="md:hidden" fill="none" stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke" />
             <path d={WAVE_D} className="hidden md:block" fill="none" stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke" />
           </svg>
+          {/* 境の瀬の波線上に浮かぶボートのアイコン */}
+          <div className="pointer-events-none absolute inset-x-0 top-0 z-[5]" aria-hidden="true">
+            <span className="absolute left-[15%] top-[16%] -translate-y-full md:top-[16.5%]">
+              <span className="hero-boat-float block text-primary-foreground/90 drop-shadow-[0_2px_8px_oklch(0_0_0/0.35)]" style={{ animationDelay: "0.2s" }}>
+                <KayakIcon />
+              </span>
+            </span>
+            <span className="absolute left-[46%] top-[17.5%] -translate-y-full md:top-[22.5%]">
+              <span className="hero-boat-float block text-primary-foreground/90 drop-shadow-[0_2px_8px_oklch(0_0_0/0.35)]" style={{ animationDelay: "1.4s" }}>
+                <SupIcon />
+              </span>
+            </span>
+            <span className="absolute left-[70%] top-[18.5%] -translate-y-full md:top-[15.5%]">
+              <span className="hero-boat-float block text-primary-foreground/90 drop-shadow-[0_2px_8px_oklch(0_0_0/0.35)]" style={{ animationDelay: "2.6s" }}>
+                <PackraftIcon />
+              </span>
+            </span>
+          </div>
           <a
             href="#reserve"
             className="relative z-10 flex h-full flex-col justify-end p-5 pb-6 text-primary-foreground md:p-10 md:pb-8"
