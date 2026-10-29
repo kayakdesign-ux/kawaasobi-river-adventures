@@ -68,7 +68,7 @@ function Index() {
           </a>
         ))}
 
-        <div className="pointer-events-none absolute left-1/2 top-1/2 z-20 hidden -translate-x-1/2 -translate-y-1/2 text-center text-primary-foreground md:block">
+        <div className="pointer-events-none absolute left-1/2 top-24 z-20 hidden -translate-x-1/2 text-center text-primary-foreground md:block">
           <p className="font-display text-xs tracking-[0.5em] opacity-80">EMERALD RIVER</p>
           <h1 className="mt-2 font-display text-3xl [text-shadow:0_2px_20px_oklch(0_0_0/0.5)]">清流で、遊ぼう。</h1>
         </div>
