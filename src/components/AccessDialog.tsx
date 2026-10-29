@@ -5,8 +5,10 @@ const DESTINATION = "高知県長岡郡大豊町西土居1";
 const ACCESS = [
   { from: "大豊IC", time: "約15分", highlight: true },
   { from: "高知市内｜ひろめ市場", time: "約50分" },
-  { from: "道の駅", time: "約30分" },
+  { from: "道の駅大杉", time: "約30分" },
   { from: "高知龍馬空港", time: "約50分" },
+  { from: "大歩危・小歩危", time: "約30分" },
+  { from: "祖谷温泉", time: "約40分" },
 ];
 
 export function AccessDialog({ open, onOpenChange }: { open: boolean; onOpenChange: (o: boolean) => void }) {
@@ -23,7 +25,7 @@ export function AccessDialog({ open, onOpenChange }: { open: boolean; onOpenChan
           <DialogDescription className="text-primary-foreground/80">集合場所：西土居1番地（車でのおおよその所要時間）</DialogDescription>
         </DialogHeader>
 
-        <ul className="grid grid-cols-2 gap-px bg-border md:grid-cols-4">
+        <ul className="grid grid-cols-2 gap-px bg-border md:grid-cols-3">
           {ACCESS.map((a) => (
             <li key={a.from} className="bg-background px-4 py-4 text-center">
               <p className="text-xs text-muted-foreground">{a.from}</p>
