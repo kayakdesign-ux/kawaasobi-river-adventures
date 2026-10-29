@@ -33,7 +33,7 @@ function Index() {
         </header>
 
         {/* アクセスマップ — 四国の地図と大豊IC */}
-        <div className="pointer-events-none absolute left-6 top-20 z-20 w-36 md:left-10 md:top-24 md:w-72">
+        <div className="pointer-events-none absolute left-4 top-16 z-20 w-36 md:left-10 md:w-64">
           <div className="rounded-[1.75rem] rounded-tr-md border border-primary-foreground/25 bg-primary-foreground/10 p-3 shadow-[0_10px_40px_oklch(0_0_0/0.35)] backdrop-blur-md md:rounded-[2.5rem] md:p-4">
             <p className="font-display text-[10px] tracking-[0.45em] text-primary-foreground/85 md:text-xs">ACCESS — 四国</p>
             <div className="relative mt-2">
