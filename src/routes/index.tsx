@@ -72,9 +72,10 @@ function Index() {
             className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-[image:var(--hero-overlay)]" />
-          <figure className="absolute right-[6%] top-1/2 z-20 hidden w-[30%] max-w-[520px] -translate-y-1/2 border-2 border-primary-foreground/80 p-2 shadow-2xl md:block">
-            <figcaption className="absolute -top-3 left-6 bg-primary px-3 font-display text-sm tracking-widest text-primary-foreground">
-              パックラフト
+          <figure className="absolute right-[2.5%] top-[42%] z-20 hidden w-[30%] max-w-[520px] -translate-y-1/2 border-2 border-primary-foreground/80 p-2 shadow-2xl md:block">
+            <figcaption className="absolute -top-4 left-5 flex items-baseline gap-2 rounded-full bg-accent px-4 py-1 font-['Zen_Maru_Gothic',sans-serif] font-bold text-primary shadow-lg">
+              <span className="text-xs">初めてでも安定抜群</span>
+              <span className="text-base">パックラフト</span>
             </figcaption>
             <img src={packraft.url} alt="パックラフト" className="block aspect-[16/10] w-full object-cover" />
           </figure>
