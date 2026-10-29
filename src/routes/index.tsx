@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import shower from "@/assets/shower.jpg";
-import touring from "@/assets/touring.jpg";
+import shower from "@/assets/shower-climbing.jpg.asset.json";
+import touring from "@/assets/river-touring.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -18,7 +18,7 @@ export const Route = createFileRoute("/")({
 
 const panels = [
   {
-    img: shower,
+    img: shower.url,
     no: "01",
     en: "SHOWER CLIMBING",
     ja: "シャワークライミング",
@@ -26,7 +26,7 @@ const panels = [
     tags: ["滝登り", "飛び込み", "渓谷探検"],
   },
   {
-    img: touring,
+    img: touring.url,
     no: "02",
     en: "1.5km RIVER TOURING",
     ja: "1.5kmツーリング",
