@@ -56,7 +56,7 @@ function Index() {
         {/* シャワークライミング — 右上4分の1 */}
         <a
           href="#reserve"
-          className="group absolute inset-x-0 bottom-0 z-10 h-[45%] overflow-hidden border-t border-primary-foreground/40 md:bottom-auto md:left-1/2 md:top-0 md:h-1/2 md:w-1/2 md:border-b md:border-l md:border-t-0"
+          className="group absolute inset-x-0 bottom-0 z-10 h-[45%] overflow-hidden rounded-t-[44px] ring-1 ring-inset ring-primary-foreground/25 md:bottom-auto md:left-1/2 md:top-0 md:h-1/2 md:w-1/2 md:rounded-bl-[110px_70px] md:rounded-t-none"
         >
           <img
             src={shower.url}
