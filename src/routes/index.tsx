@@ -98,7 +98,7 @@ function Index() {
               <div className="h-20 w-36 shrink-0 overflow-hidden rounded-lg md:h-24 md:w-42">
                 <img src={packraftIllust.url} alt="パックラフトのイラスト" loading="lazy" className="h-full w-full scale-150 object-cover" />
               </div>
-              <span className="font-['Zen_Maru_Gothic',sans-serif] text-sm font-bold leading-snug text-primary md:text-base">
+              <span className="font-['Zen_Maru_Gothic',sans-serif] text-xs font-bold leading-snug text-primary md:text-sm">
                 初めてでも安定抜群！<br className="hidden md:block" />
                 パックラフト
               </span>
@@ -107,7 +107,7 @@ function Index() {
               <div className="h-20 w-36 shrink-0 overflow-hidden rounded-lg md:h-24 md:w-42">
                 <img src={kayakIllust.url} alt="カヤックのイラスト" loading="lazy" className="h-full w-full scale-150 object-cover" />
               </div>
-              <span className="font-['Zen_Maru_Gothic',sans-serif] text-sm font-bold leading-snug text-primary md:text-base">
+              <span className="font-['Zen_Maru_Gothic',sans-serif] text-xs font-bold leading-snug text-primary md:text-sm">
                 根強い人気のカヤック
               </span>
             </div>
