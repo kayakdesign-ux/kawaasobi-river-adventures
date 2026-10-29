@@ -30,15 +30,17 @@ const WAVE_D =
   "M0,94.2 C3.7,76.9 16.1,61.2 27.2,61.2 C40.3,61.2 46.6,97.9 67.1,97.9 C80.1,97.9 88.5,95.1 93.2,93.7 C97.1,80.5 105.1,67.9 117.0,67.9 C130.8,67.9 142.5,94.6 164.2,94.6 C178.1,94.6 187.0,92.4 191.9,91.3 C196.6,81.4 207.8,69.5 221.8,69.5 C238.3,69.5 250.6,94.2 276.4,94.2 C292.8,94.2 303.4,92.1 309.3,91.1 C313.0,84.3 324.0,74.7 335.3,74.7 C348.4,74.7 356.2,94.1 376.9,94.1 C390.0,94.1 398.5,92.4 403.2,91.6 C407.0,82.3 418.7,71.1 430.2,71.1 C443.6,71.1 451.2,97.4 472.3,97.4 C485.7,97.4 494.4,95.4 499.2,94.4 C503.2,80.3 516.5,67.4 528.5,67.4 C542.5,67.4 549.2,96.0 571.3,96.0 C585.3,96.0 594.3,93.7 599.3,92.6 C602.5,82.1 615.2,70.8 624.7,70.8 C635.8,70.8 639.0,95.1 656.5,95.1 C667.6,95.1 674.8,93.1 678.7,92.1 C682.6,76.7 695.7,61.0 707.3,61.0 C720.8,61.0 726.9,97.4 748.0,97.4 C761.5,97.4 770.2,94.6 775.0,93.2 C779.1,83.5 789.6,73.4 801.9,73.4 C816.2,73.4 826.1,94.9 848.6,94.9 C863.0,94.9 872.2,93.1 877.3,92.2 C881.7,86.0 894.1,77.8 907.4,77.8 C922.9,77.8 932.6,97.1 957.0,97.1 C972.5,97.1 982.4,95.6 988.0,94.9 C990.9,78.2 1002.7,63.7 1011.6,63.7 C1022.1,63.7 1025.4,95.5 1041.8,95.5 C1052.3,95.5 1059.0,93.0 1062.8,91.7 C1066.2,78.2 1074.5,63.7 1084.7,63.7 C1096.7,63.7 1105.5,94.0 1124.3,94.0 C1136.3,94.0 1144.0,91.4 1148.3,90.1 C1151.3,77.6 1163.1,62.5 1172.1,62.5 C1182.5,62.5 1185.6,95.9 1202.0,95.9 C1212.5,95.9 1219.2,93.2 1222.9,91.9 C1227.4,82.7 1241.9,71.9 1255.3,71.9 C1270.9,71.9 1278.7,94.3 1303.2,94.3 C1318.8,94.3 1328.9,92.4 1334.4,91.4 C1338.7,78.9 1347.8,64.9 1360.5,64.9 C1375.3,64.9 1387.2,95.1 1410.4,95.1 C1425.2,95.1 1434.7,92.6 1440.0,91.4";
 
 // タグを押すと下にキャッチコピーとイラストが出る
+const TANDEM_SEATS = ["2人乗り 6〜9歳", "1人乗り 10歳〜"];
 const TOUR_TAGS = [
-  { label: "サップ", catch: "夏のおすすめNo1", icon: illustSup },
-  { label: "パックラフト", catch: "初めてでも安心パックラフト", icon: illustPackraft },
-  { label: "カヤック", catch: "根強い人気のカヤック", icon: illustKayak },
+  { label: "サップ", catch: "夏のおすすめNo1", icon: illustSup, seats: TANDEM_SEATS },
+  { label: "パックラフト", catch: "初めてでも安心パックラフト", icon: illustPackraft, seats: TANDEM_SEATS },
+  { label: "カヤック", catch: "根強い人気のカヤック", icon: illustKayak, seats: ["1人乗り 10歳〜"] },
 ] as const;
 
 function Index() {
   const [accessOpen, setAccessOpen] = useState(false);
   const [activeTag, setActiveTag] = useState<string | null>(null);
+  const [showerOpen, setShowerOpen] = useState(false);
   const activeTour = TOUR_TAGS.find((t) => t.label === activeTag);
   return (
     <main className="bg-background">
@@ -91,8 +93,11 @@ function Index() {
             </figcaption>
             <img src={packraft.url} alt="パックラフト" className="block aspect-[16/10] w-full object-cover" />
           </figure>
-          <div className="relative z-10 flex h-full flex-col justify-end p-6 pb-24 text-primary-foreground md:p-12 md:pb-24">
-            <span className="font-display text-sm tracking-[0.3em] text-accent">02 — 1.5KM RIVER TOURING</span>
+          <div className={`relative z-10 flex h-full flex-col justify-end p-6 pb-24 text-primary-foreground transition-opacity duration-500 md:p-12 md:pb-24 ${showerOpen ? "pointer-events-none opacity-0" : "opacity-100"}`}>
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="font-display text-sm tracking-[0.3em] text-accent">02 — 1.5KM RIVER TOURING</span>
+              <span className="-rotate-2 rounded-full bg-accent px-3 py-0.5 font-['Zen_Maru_Gothic',sans-serif] text-xs font-bold text-primary shadow-lg md:text-sm">どのコースも 岩からジャンプは何回でも！</span>
+            </div>
             <h2 className="mt-3 font-display text-4xl leading-tight md:text-7xl">1.5kmツーリング</h2>
             <p className="mt-4 whitespace-pre-line text-base opacity-90 md:text-xl">透きとおる水面を、{"\n"}ゆったりと下る。</p>
             <div className="mt-6 flex flex-wrap gap-2.5 md:gap-3">
@@ -127,7 +132,14 @@ function Index() {
             {activeTour && (
               <div className="mt-4 flex w-fit animate-in items-center gap-3 rounded-2xl bg-primary-foreground/15 px-4 py-2.5 backdrop-blur-md fade-in slide-in-from-bottom-2 duration-300">
                 <img src={activeTour.icon} alt="" loading="lazy" width={816} height={816} className="h-14 w-14 shrink-0 object-contain md:h-20 md:w-20" />
-                <span className="whitespace-nowrap font-['Zen_Maru_Gothic',sans-serif] text-base font-bold tracking-wide md:text-xl">{activeTour.catch}</span>
+                <div className="font-['Zen_Maru_Gothic',sans-serif]">
+                  <span className="block whitespace-nowrap text-base font-bold tracking-wide md:text-xl">{activeTour.catch}</span>
+                  <div className="mt-1.5 flex flex-wrap gap-1.5">
+                    {activeTour.seats.map((s) => (
+                      <span key={s} className="rounded-full bg-accent px-2.5 py-0.5 text-xs font-bold text-primary md:text-sm">{s}</span>
+                    ))}
+                  </div>
+                </div>
               </div>
             )}
             <span className="mt-8 inline-flex w-fit items-center gap-3 border-b border-accent pb-1 text-sm tracking-widest">
@@ -136,9 +148,24 @@ function Index() {
           </div>
         </a>
 
-        {/* シャワークライミング — 下4分の1、境の瀬の波で重なる */}
-        <div className="group absolute inset-x-0 bottom-0 z-10 h-[32%] transition-[height] duration-700 ease-out md:h-[27%] md:group-hover:h-[30%]">
-          <a href="#reserve" className="hero-wave-mask absolute inset-0 block overflow-hidden">
+        {/* シャワークライミング — 下4分の1、押すと画面半分まで広がる */}
+        <div
+          role="button"
+          tabIndex={0}
+          aria-expanded={showerOpen}
+          aria-label="シャワークライミングを大きく表示"
+          onClick={() => setShowerOpen((v) => !v)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              setShowerOpen((v) => !v);
+            }
+          }}
+          className={`group absolute inset-x-0 bottom-0 z-10 cursor-pointer transition-[height] duration-700 ease-out ${
+            showerOpen ? "h-[50%]" : "h-[32%] md:h-[27%] md:hover:h-[30%]"
+          }`}
+        >
+          <div className="hero-wave-mask absolute inset-0 block overflow-hidden">
             <img
               src={shower.url}
               alt="シャワークライミング"
@@ -147,7 +174,7 @@ function Index() {
               className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-[image:var(--hero-overlay)]" />
-          </a>
+          </div>
           <svg
             className="pointer-events-none absolute inset-0 h-full w-full text-primary-foreground/40"
             viewBox="0 0 1440 400"
@@ -157,22 +184,29 @@ function Index() {
             <path d={WAVE_MOBILE_D} className="md:hidden" fill="none" stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke" />
             <path d={WAVE_D} className="hidden md:block" fill="none" stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke" />
           </svg>
-          <a
-            href="#reserve"
-            className="relative z-10 flex h-full flex-col justify-end p-5 pb-6 text-primary-foreground md:p-10 md:pb-8"
-          >
-            <span className="font-display text-sm tracking-[0.3em] text-accent">01 — SHOWER CLIMBING</span>
+          <div className="relative z-10 flex h-full flex-col justify-end p-5 pb-6 text-primary-foreground md:p-10 md:pb-8">
+            <div className="flex items-center gap-3">
+              <span className="font-display text-sm tracking-[0.3em] text-accent">01 — SHOWER CLIMBING</span>
+              <span className="rounded-full bg-accent px-3 py-0.5 font-['Zen_Maru_Gothic',sans-serif] text-xs font-bold text-primary md:text-sm">6歳〜OK</span>
+            </div>
             <h2 className="mt-2 font-display text-3xl leading-tight md:text-5xl">シャワークライミング</h2>
-            <p className="mt-3 hidden whitespace-pre-line text-sm opacity-90 md:block md:text-lg">滝を浴び、岩を登る。{"\n"}渓谷を遡る冒険へ。</p>
-            <div className="mt-3 flex flex-wrap gap-2 md:mt-4">
-              {["滝登り", "飛び込み", "渓谷探検"].map((t) => (
+            <p className={`mt-3 whitespace-pre-line text-sm opacity-90 md:text-lg ${showerOpen ? "block" : "hidden"}`}>滝を浴び、岩を登る。{"\n"}渓谷を遡る冒険へ。</p>
+            <div className={`mt-3 flex-wrap gap-2 md:mt-4 ${showerOpen ? "flex" : "hidden"}`}>
+              {["滝登り", "岩ジャンプ何度でも！", "渓谷探検"].map((t) => (
                 <span key={t} className="rounded-full bg-primary-foreground/15 px-3 py-1 text-xs backdrop-blur-md md:text-sm">{t}</span>
               ))}
             </div>
-            <span className="mt-4 inline-flex w-fit items-center gap-3 border-b border-accent pb-1 text-sm tracking-widest md:mt-5">
-              詳しく見る <span className="transition-transform group-hover:translate-x-2">→</span>
-            </span>
-          </a>
+            <div className="mt-4 flex items-center gap-5 md:mt-5">
+              <a
+                href="#reserve"
+                onClick={(e) => e.stopPropagation()}
+                className="inline-flex w-fit items-center gap-3 border-b border-accent pb-1 text-sm tracking-widest"
+              >
+                詳しく見る <span className="transition-transform group-hover:translate-x-2">→</span>
+              </a>
+              <span className="text-xs opacity-75">{showerOpen ? "タップで閉じる" : "タップで大きく"}</span>
+            </div>
+          </div>
         </div>
 
         <div className="pointer-events-none absolute left-10 top-[32%] z-[5] hidden -translate-y-1/2 text-primary-foreground md:left-[22rem] md:block">
