@@ -93,7 +93,7 @@ function Index() {
             </figcaption>
             <img src={packraft.url} alt="パックラフト" className="block aspect-[16/10] w-full object-cover" />
           </figure>
-          <div className="relative z-10 flex h-full flex-col justify-end p-6 pb-24 text-primary-foreground md:p-12 md:pb-24">
+          <div className={`relative z-10 flex h-full flex-col justify-end p-6 pb-24 text-primary-foreground transition-opacity duration-500 md:p-12 md:pb-24 ${showerOpen ? "pointer-events-none opacity-0" : "opacity-100"}`}>
             <span className="mb-3 w-fit -rotate-2 rounded-full bg-accent px-4 py-1 font-['Zen_Maru_Gothic',sans-serif] text-sm font-bold text-primary shadow-lg md:text-base">どのコースも 岩からジャンプは何回でも！</span>
             <span className="font-display text-sm tracking-[0.3em] text-accent">02 — 1.5KM RIVER TOURING</span>
             <h2 className="mt-3 font-display text-4xl leading-tight md:text-7xl">1.5kmツーリング</h2>
