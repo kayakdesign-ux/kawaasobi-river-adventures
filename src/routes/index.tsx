@@ -16,6 +16,10 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+// 境の瀬: boundary wave shared by the mask in styles.css and the crest line below.
+const WAVE_D =
+  "M0,84 C120,56 240,48 360,68 C480,88 600,112 720,92 C840,72 960,52 1080,72 C1200,92 1320,100 1440,76";
+
 function Index() {
   return (
     <main className="bg-background">
@@ -25,10 +29,10 @@ function Index() {
           <a href="#reserve" className="rounded-full border border-primary-foreground/60 px-5 py-2 text-sm backdrop-blur-sm transition hover:bg-primary-foreground hover:text-primary">ご予約</a>
         </header>
 
-        {/* 1.5kmツーリング — 全面 */}
+        {/* 1.5kmツーリング — 上3分の3 */}
         <a
           href="#reserve"
-          className="group absolute inset-x-0 top-0 h-[55%] overflow-hidden md:inset-0 md:h-auto"
+          className="group absolute inset-x-0 top-0 h-[76%] overflow-hidden md:h-[82%]"
         >
           <img
             src={touring.url}
@@ -38,7 +42,7 @@ function Index() {
             className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-[image:var(--hero-overlay)]" />
-          <div className="relative z-10 flex h-full flex-col justify-end p-6 pb-10 text-primary-foreground md:p-12 md:pb-16">
+          <div className="relative z-10 flex h-full flex-col justify-end p-6 pb-24 text-primary-foreground md:p-12 md:pb-24">
             <span className="font-display text-sm tracking-[0.3em] text-accent">02 — 1.5KM RIVER TOURING</span>
             <h2 className="mt-3 font-display text-4xl leading-tight md:text-7xl">1.5kmツーリング</h2>
             <p className="mt-4 whitespace-pre-line text-base opacity-90 md:text-xl">透きとおる水面を、{"\n"}ゆったりと下る。</p>
@@ -53,35 +57,45 @@ function Index() {
           </div>
         </a>
 
-        {/* シャワークライミング — 右上4分の1 */}
-        <a
-          href="#reserve"
-          className="group absolute inset-x-0 bottom-0 z-10 h-[45%] overflow-hidden rounded-t-[44px] ring-1 ring-inset ring-primary-foreground/25 md:bottom-auto md:left-1/2 md:top-0 md:h-1/2 md:w-1/2 md:rounded-bl-[110px_70px] md:rounded-t-none"
-        >
-          <img
-            src={shower.url}
-            alt="シャワークライミング"
-            width={1200}
-            height={1504}
-            className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
-          />
-          <div className="absolute inset-0 bg-[image:var(--hero-overlay)]" />
-          <div className="relative z-10 flex h-full flex-col justify-end p-6 pb-8 text-primary-foreground md:p-10 md:pb-12">
+        {/* シャワークライミング — 下4分の1、境の瀬の波で重なる */}
+        <div className="group absolute inset-x-0 bottom-0 z-10 h-[32%] transition-[height] duration-700 ease-out md:h-[27%] md:group-hover:h-[30%]">
+          <a href="#reserve" className="hero-wave-mask absolute inset-0 block overflow-hidden">
+            <img
+              src={shower.url}
+              alt="シャワークライミング"
+              width={1200}
+              height={1504}
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-[image:var(--hero-overlay)]" />
+          </a>
+          <svg
+            className="pointer-events-none absolute inset-0 h-full w-full text-primary-foreground/40"
+            viewBox="0 0 1440 400"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <path d={WAVE_D} fill="none" stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke" />
+          </svg>
+          <a
+            href="#reserve"
+            className="relative z-10 flex h-full flex-col justify-end p-5 pb-6 text-primary-foreground md:p-10 md:pb-8"
+          >
             <span className="font-display text-sm tracking-[0.3em] text-accent">01 — SHOWER CLIMBING</span>
             <h2 className="mt-2 font-display text-3xl leading-tight md:text-5xl">シャワークライミング</h2>
-            <p className="mt-3 whitespace-pre-line text-sm opacity-90 md:text-lg">滝を浴び、岩を登る。{"\n"}渓谷を遡る冒険へ。</p>
-            <div className="mt-4 flex flex-wrap gap-2">
+            <p className="mt-3 hidden whitespace-pre-line text-sm opacity-90 md:block md:text-lg">滝を浴び、岩を登る。{"\n"}渓谷を遡る冒険へ。</p>
+            <div className="mt-3 flex flex-wrap gap-2 md:mt-4">
               {["滝登り", "飛び込み", "渓谷探検"].map((t) => (
                 <span key={t} className="rounded-full bg-primary-foreground/15 px-3 py-1 text-xs backdrop-blur-md md:text-sm">{t}</span>
               ))}
             </div>
-            <span className="mt-5 inline-flex w-fit items-center gap-3 border-b border-accent pb-1 text-sm tracking-widest">
+            <span className="mt-4 inline-flex w-fit items-center gap-3 border-b border-accent pb-1 text-sm tracking-widest md:mt-5">
               詳しく見る <span className="transition-transform group-hover:translate-x-2">→</span>
             </span>
-          </div>
-        </a>
+          </a>
+        </div>
 
-        <div className="pointer-events-none absolute left-10 top-1/2 z-10 hidden -translate-y-1/2 text-primary-foreground md:block">
+        <div className="pointer-events-none absolute left-10 top-[32%] z-[5] hidden -translate-y-1/2 text-primary-foreground md:block">
           <p className="font-display text-xs tracking-[0.5em] opacity-80">EMERALD RIVER</p>
           <h1 className="mt-2 font-display text-4xl [text-shadow:0_2px_20px_oklch(0_0_0/0.5)]">清流で、遊ぼう。</h1>
         </div>
