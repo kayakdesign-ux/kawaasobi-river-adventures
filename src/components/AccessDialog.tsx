@@ -5,8 +5,10 @@ const DESTINATION = "高知県長岡郡大豊町西土居1";
 const ACCESS = [
   { from: "大豊IC", time: "約15分", highlight: true },
   { from: "高知市内｜ひろめ市場", time: "約50分" },
-  { from: "道の駅", time: "約30分" },
+  { from: "道の駅大杉", time: "約30分" },
   { from: "高知龍馬空港", time: "約50分" },
+  { from: "大歩危・小歩危", time: "約30分" },
+  { from: "祖谷温泉", time: "約40分" },
 ];
 
 export function AccessDialog({ open, onOpenChange }: { open: boolean; onOpenChange: (o: boolean) => void }) {
