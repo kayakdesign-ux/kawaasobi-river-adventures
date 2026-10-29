@@ -25,7 +25,7 @@ export function AccessDialog({ open, onOpenChange }: { open: boolean; onOpenChan
           <DialogDescription className="text-primary-foreground/80">集合場所：西土居1番地（車でのおおよその所要時間）</DialogDescription>
         </DialogHeader>
 
-        <ul className="grid grid-cols-2 gap-px bg-border md:grid-cols-4">
+        <ul className="grid grid-cols-2 gap-px bg-border md:grid-cols-3">
           {ACCESS.map((a) => (
             <li key={a.from} className="bg-background px-4 py-4 text-center">
               <p className="text-xs text-muted-foreground">{a.from}</p>
