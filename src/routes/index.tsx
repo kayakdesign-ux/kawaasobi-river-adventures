@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import shower from "@/assets/shower-climbing.jpg.asset.json";
 import touring from "@/assets/river-touring.jpg.asset.json";
+import shikokuMap from "@/assets/shikoku-map.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -30,6 +31,30 @@ function Index() {
           <span className="font-display text-2xl tracking-widest">川遊び<span className="ml-2 text-xs opacity-80">KAWAASOBI</span></span>
           <a href="#reserve" className="rounded-full border border-primary-foreground/60 px-5 py-2 text-sm backdrop-blur-sm transition hover:bg-primary-foreground hover:text-primary">ご予約</a>
         </header>
+
+        {/* アクセスマップ — 四国の地図と大豊IC */}
+        <div className="pointer-events-none absolute left-4 top-16 z-20 w-36 md:left-10 md:w-64">
+          <div className="rounded-[1.75rem] rounded-tr-md border border-primary-foreground/25 bg-primary-foreground/10 p-3 shadow-[0_10px_40px_oklch(0_0_0/0.35)] backdrop-blur-md md:rounded-[2.5rem] md:p-4">
+            <p className="whitespace-nowrap font-display text-[10px] tracking-[0.3em] text-primary-foreground/85 md:text-xs md:tracking-[0.45em]">ACCESS — 四国</p>
+            <div className="relative mt-2">
+              <img
+                src={shikokuMap.url}
+                alt="四国の地図。大豊ICの位置に☆印"
+                className="w-full opacity-95 drop-shadow-[0_4px_18px_oklch(0_0_0/0.35)]"
+              />
+              {/* 大豊IC — ☆マーカー（地図のピン位置に重ねる） */}
+              <div className="absolute left-[57.6%] top-[39.8%] -translate-x-1/2 -translate-y-[88%]">
+                <span className="relative block text-center">
+                  <span className="map-marker-ping absolute left-1/2 top-1/2 -z-10 h-8 w-8 -translate-x-1/2 -translate-y-1/2 rounded-full border border-accent/70 bg-accent/30" />
+                  <span className="text-2xl leading-none text-accent [text-shadow:0_0_8px_oklch(0.35_0.08_175/0.9),0_1px_3px_oklch(0_0_0/0.6)] md:text-3xl">☆</span>
+                </span>
+                <span className="mt-1 block -translate-x-1/3 rounded-full bg-primary-foreground px-2 py-0.5 text-center text-[10px] font-medium text-primary md:text-xs">
+                  大豊IC
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
 
         {/* 1.5kmツーリング — 上3分の3 */}
         <a
@@ -98,7 +123,7 @@ function Index() {
           </a>
         </div>
 
-        <div className="pointer-events-none absolute left-10 top-[32%] z-[5] hidden -translate-y-1/2 text-primary-foreground md:block">
+        <div className="pointer-events-none absolute left-10 top-[32%] z-[5] hidden -translate-y-1/2 text-primary-foreground md:left-[22rem] md:block">
           <p className="font-display text-xs tracking-[0.5em] opacity-80">EMERALD RIVER</p>
           <h1 className="mt-2 font-display text-4xl [text-shadow:0_2px_20px_oklch(0_0_0/0.5)]">清流で、遊ぼう。</h1>
         </div>
