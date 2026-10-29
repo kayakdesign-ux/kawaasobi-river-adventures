@@ -94,8 +94,10 @@ function Index() {
             <img src={packraft.url} alt="パックラフト" className="block aspect-[16/10] w-full object-cover" />
           </figure>
           <div className={`relative z-10 flex h-full flex-col justify-end p-6 pb-24 text-primary-foreground transition-opacity duration-500 md:p-12 md:pb-24 ${showerOpen ? "pointer-events-none opacity-0" : "opacity-100"}`}>
-            <span className="mb-3 w-fit -rotate-2 rounded-full bg-accent px-4 py-1 font-['Zen_Maru_Gothic',sans-serif] text-sm font-bold text-primary shadow-lg md:text-base">どのコースも 岩からジャンプは何回でも！</span>
-            <span className="font-display text-sm tracking-[0.3em] text-accent">02 — 1.5KM RIVER TOURING</span>
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="font-display text-sm tracking-[0.3em] text-accent">02 — 1.5KM RIVER TOURING</span>
+              <span className="-rotate-2 rounded-full bg-accent px-3 py-0.5 font-['Zen_Maru_Gothic',sans-serif] text-xs font-bold text-primary shadow-lg md:text-sm">どのコースも 岩からジャンプは何回でも！</span>
+            </div>
             <h2 className="mt-3 font-display text-4xl leading-tight md:text-7xl">1.5kmツーリング</h2>
             <p className="mt-4 whitespace-pre-line text-base opacity-90 md:text-xl">透きとおる水面を、{"\n"}ゆったりと下る。</p>
             <div className="mt-6 flex flex-wrap gap-2.5 md:gap-3">
@@ -188,8 +190,8 @@ function Index() {
               <span className="rounded-full bg-accent px-3 py-0.5 font-['Zen_Maru_Gothic',sans-serif] text-xs font-bold text-primary md:text-sm">6歳〜OK</span>
             </div>
             <h2 className="mt-2 font-display text-3xl leading-tight md:text-5xl">シャワークライミング</h2>
-            <p className={`mt-3 whitespace-pre-line text-sm opacity-90 md:block md:text-lg ${showerOpen ? "block" : "hidden"}`}>滝を浴び、岩を登る。{"\n"}渓谷を遡る冒険へ。</p>
-            <div className="mt-3 flex flex-wrap gap-2 md:mt-4">
+            <p className={`mt-3 whitespace-pre-line text-sm opacity-90 md:text-lg ${showerOpen ? "block" : "hidden"}`}>滝を浴び、岩を登る。{"\n"}渓谷を遡る冒険へ。</p>
+            <div className={`mt-3 flex-wrap gap-2 md:mt-4 ${showerOpen ? "flex" : "hidden"}`}>
               {["滝登り", "岩ジャンプ何度でも！", "渓谷探検"].map((t) => (
                 <span key={t} className="rounded-full bg-primary-foreground/15 px-3 py-1 text-xs backdrop-blur-md md:text-sm">{t}</span>
               ))}
