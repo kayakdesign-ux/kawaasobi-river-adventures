@@ -1,20 +1,20 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { AccessDialog } from "@/components/AccessDialog";
-import shower from "@/assets/shower-climbing.jpg.asset.json";
-import touring from "@/assets/river-touring.jpg.asset.json";
-import riverBridge from "@/assets/river-bridge.jpg.asset.json";
+import shower from "@/assets/shower-climbing.jpg";
+import touring from "@/assets/river-touring.jpg";
+import riverBridge from "@/assets/river-bridge.jpg";
 
 // ツーリング背景の写真（pos は人物が見える位置への調整）
 const TOURING_SLIDES = [
-  { src: touring.url, pos: "object-[50%_70%]" },
-  { src: riverBridge.url, pos: "object-[50%_80%]" },
+  { src: touring, pos: "object-[50%_70%]" },
+  { src: riverBridge, pos: "object-[50%_80%]" },
 ];
-import packraft from "@/assets/packraft.jpg.asset.json";
-import jumpIllust from "@/assets/jump-illust.jpg.asset.json";
-import packraftIllust from "@/assets/packraft-illust.jpg.asset.json";
-import kayakIllust from "@/assets/kayak-illust.png.asset.json";
-import shikokuMap from "@/assets/shikoku-map.png.asset.json";
+import packraft from "@/assets/packraft.jpg";
+import jumpIllust from "@/assets/jump-illust.jpg";
+import packraftIllust from "@/assets/packraft-illust.jpg";
+import kayakIllust from "@/assets/kayak-illust.png";
+import shikokuMap from "@/assets/shikoku-map.png";
 import illustPackraft from "@/assets/illust-packraft.png";
 import illustSup from "@/assets/illust-sup.png";
 import illustKayak from "@/assets/illust-kayak.png";
@@ -87,7 +87,7 @@ function Index() {
             <p className="whitespace-nowrap font-display text-[10px] tracking-[0.3em] text-primary-foreground/85 md:text-xs md:tracking-[0.45em]">ACCESS — 四国</p>
             <div className="relative mt-2">
               <img
-                src={shikokuMap.url}
+                src={shikokuMap}
                 alt="四国の地図。大豊ICの位置に☆印"
                 className="w-full opacity-95 drop-shadow-[0_4px_18px_oklch(0_0_0/0.35)]"
               />
@@ -130,11 +130,11 @@ function Index() {
               <span className="text-base">飛び込みは何回もできます！！</span>
             </figcaption>
             <div className="aspect-[4/3] w-full overflow-hidden">
-              <img src={jumpIllust.url} alt="岩から川へ飛び込む様子" className="block h-full w-full scale-[1.4] object-cover object-[50%_45%]" />
+              <img src={jumpIllust} alt="岩から川へ飛び込む様子" className="block h-full w-full scale-[1.4] object-cover object-[50%_45%]" />
             </div>
             {[
-              { src: packraftIllust.url, alt: "パックラフトのイラスト", label: "初めてでも安定抜群！パックラフト" },
-              { src: kayakIllust.url, alt: "カヤックのイラスト", label: "根強い人気のカヤック" },
+              { src: packraftIllust, alt: "パックラフトのイラスト", label: "初めてでも安定抜群！パックラフト" },
+              { src: kayakIllust, alt: "カヤックのイラスト", label: "根強い人気のカヤック" },
             ].map((it) => (
               <div key={it.label} className="relative mt-5 rounded-lg border-2 border-primary-foreground/80 p-1">
                 <span className="absolute -top-3.5 left-3 z-10 whitespace-nowrap rounded-full bg-accent px-3 py-0.5 font-['Zen_Maru_Gothic',sans-serif] text-xs font-bold text-primary shadow-lg md:text-sm">
@@ -223,7 +223,7 @@ function Index() {
         >
           <div className="hero-wave-mask absolute inset-0 block overflow-hidden">
             <img
-              src={shower.url}
+              src={shower}
               alt="シャワークライミング"
               width={1200}
               height={1504}
