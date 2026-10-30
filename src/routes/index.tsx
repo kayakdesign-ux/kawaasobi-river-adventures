@@ -1,8 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AccessDialog } from "@/components/AccessDialog";
 import shower from "@/assets/shower-climbing.jpg.asset.json";
 import touring from "@/assets/river-touring.jpg.asset.json";
+import riverBridge from "@/assets/river-bridge.jpg.asset.json";
+
+// ツーリング背景の写真（pos は人物が見える位置への調整）
+const TOURING_SLIDES = [
+  { src: touring.url, pos: "object-[50%_70%]" },
+  { src: riverBridge.url, pos: "object-[50%_80%]" },
+];
 import packraft from "@/assets/packraft.jpg.asset.json";
 import jumpIllust from "@/assets/jump-illust.jpg.asset.json";
 import packraftIllust from "@/assets/packraft-illust.jpg.asset.json";
@@ -44,6 +51,13 @@ function Index() {
   const [accessOpen, setAccessOpen] = useState(false);
   const [activeTag, setActiveTag] = useState<string | null>(null);
   const [showerOpen, setShowerOpen] = useState(false);
+  // アクセス毎にランダムな写真から始め、滞在中は7秒ごとにクロスフェード
+  const [slide, setSlide] = useState(0);
+  useEffect(() => {
+    setSlide(Math.floor(Math.random() * TOURING_SLIDES.length));
+    const id = setInterval(() => setSlide((s) => (s + 1) % TOURING_SLIDES.length), 7000);
+    return () => clearInterval(id);
+  }, []);
   const activeTour = TOUR_TAGS.find((t) => t.label === activeTag);
   return (
     <main className="bg-background">
@@ -87,13 +101,16 @@ function Index() {
           href="#reserve"
           className="group absolute inset-x-0 top-0 h-[76%] overflow-hidden md:h-[82%]"
         >
-          <img
-            src={touring.url}
-            alt="1.5kmツーリング"
-            width={1920}
-            height={1080}
-            className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
-          />
+          {TOURING_SLIDES.map((s, i) => (
+            <img
+              key={s.src}
+              src={s.src}
+              alt="1.5kmツーリング"
+              width={1920}
+              height={1080}
+              className={`absolute inset-0 h-full w-full object-cover transition-[opacity,transform] duration-[2500ms] ease-in-out group-hover:scale-105 ${s.pos} ${i === slide ? "opacity-100" : "opacity-0"}`}
+            />
+          ))}
           <div className="absolute inset-0 bg-[image:var(--hero-overlay)]" />
           <figure className="absolute right-[2.5%] top-[42%] z-20 hidden w-[19.2%] max-w-[333px] -translate-y-1/2 border-2 border-primary-foreground/80 p-2 shadow-2xl md:block">
             <figcaption className="absolute -top-4 left-5 flex items-baseline gap-2 whitespace-nowrap rounded-full bg-accent px-4 py-1 font-['Zen_Maru_Gothic',sans-serif] font-bold text-primary shadow-lg">
