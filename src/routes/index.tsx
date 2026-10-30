@@ -99,24 +99,22 @@ function Index() {
             <figcaption className="absolute -top-4 left-5 flex items-baseline gap-2 whitespace-nowrap rounded-full bg-accent px-4 py-1 font-['Zen_Maru_Gothic',sans-serif] font-bold text-primary shadow-lg">
               <span className="text-base">飛び込みは何回もできます！！</span>
             </figcaption>
-            <img src={jumpIllust.url} alt="岩から川へ飛び込む様子" className="block aspect-[4/3] w-full object-cover object-[50%_45%]" />
-            <div className="mt-2 flex items-center gap-2 rounded-lg bg-white/50 px-1.5 py-1">
-              <div className="h-20 w-36 shrink-0 overflow-hidden rounded-lg md:h-24 md:w-42">
-                <img src={packraftIllust.url} alt="パックラフトのイラスト" loading="lazy" className="h-full w-full scale-150 object-cover" />
-              </div>
-              <span className="font-['Zen_Maru_Gothic',sans-serif] text-xs font-bold leading-snug text-primary md:text-sm">
-                初めてでも安定抜群！<br className="hidden md:block" />
-                パックラフト
-              </span>
+            <div className="aspect-[4/3] w-full overflow-hidden">
+              <img src={jumpIllust.url} alt="岩から川へ飛び込む様子" className="block h-full w-full scale-[1.4] object-cover object-[50%_45%]" />
             </div>
-            <div className="mt-1 flex items-center gap-2 rounded-lg bg-white/50 px-1.5 py-1">
-              <div className="h-20 w-36 shrink-0 overflow-hidden rounded-lg md:h-24 md:w-42">
-                <img src={kayakIllust.url} alt="カヤックのイラスト" loading="lazy" className="h-full w-full scale-150 object-cover" />
+            {[
+              { src: packraftIllust.url, alt: "パックラフトのイラスト", label: "初めてでも安定抜群！パックラフト" },
+              { src: kayakIllust.url, alt: "カヤックのイラスト", label: "根強い人気のカヤック" },
+            ].map((it) => (
+              <div key={it.label} className="relative mt-5 rounded-lg border-2 border-primary-foreground/80 p-1">
+                <span className="absolute -top-3.5 left-3 z-10 whitespace-nowrap rounded-full bg-accent px-3 py-0.5 font-['Zen_Maru_Gothic',sans-serif] text-xs font-bold text-primary shadow-lg md:text-sm">
+                  {it.label}
+                </span>
+                <div className="h-28 w-full overflow-hidden rounded-md">
+                  <img src={it.src} alt={it.alt} loading="lazy" className="h-full w-full scale-150 object-cover" />
+                </div>
               </div>
-              <span className="font-['Zen_Maru_Gothic',sans-serif] text-xs font-bold leading-snug text-primary md:text-sm">
-                根強い人気のカヤック
-              </span>
-            </div>
+            ))}
           </figure>
           <div className={`relative z-10 flex h-full flex-col justify-end p-6 pb-24 text-primary-foreground transition-opacity duration-500 md:p-12 md:pb-24 ${showerOpen ? "pointer-events-none opacity-0" : "opacity-100"}`}>
             <div className="flex flex-wrap items-center gap-3">
@@ -124,7 +122,7 @@ function Index() {
               <span className="-rotate-2 rounded-full bg-accent px-3 py-0.5 font-['Zen_Maru_Gothic',sans-serif] text-xs font-bold text-primary shadow-lg md:text-sm">どのコースも 岩からジャンプは何回でも！</span>
             </div>
             <h2 className="mt-3 font-display text-4xl leading-tight md:text-6xl">初めてでも立てる<br />吉野川の緩やかサップ+川遊び</h2>
-            <p className="mt-4 whitespace-pre-line text-base opacity-90 md:text-xl">1.5kmツーリング</p>
+            <p className="mt-4 whitespace-pre-line text-base opacity-90 md:text-xl">1.5kmツーリング　親子三代で楽しめる</p>
             <div className="mt-6 flex flex-wrap gap-2.5 md:gap-3">
               {TOUR_TAGS.map((t) => (
                 <span
@@ -210,11 +208,13 @@ function Index() {
             <path d={WAVE_D} className="hidden md:block" fill="none" stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke" />
           </svg>
           <div className="relative z-10 flex h-full flex-col justify-end p-5 pb-6 text-primary-foreground md:p-10 md:pb-8">
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-3">
               <span className="font-display text-sm tracking-[0.3em] text-accent">01 — SHOWER CLIMBING</span>
               <span className="rounded-full bg-accent px-3 py-0.5 font-['Zen_Maru_Gothic',sans-serif] text-xs font-bold text-primary md:text-sm">6歳〜OK</span>
+              <span className="rounded-full bg-background px-3 py-0.5 font-['Zen_Maru_Gothic',sans-serif] text-xs font-bold text-primary md:text-sm">開催期間 7/1〜9/末</span>
             </div>
             <h2 className="mt-2 font-display text-3xl leading-tight md:text-5xl">シャワークライミング</h2>
+            <p className="mt-1 font-['Zen_Maru_Gothic',sans-serif] text-base font-bold md:text-xl">体ひとつで渓流遊び</p>
             <p className={`mt-3 whitespace-pre-line text-sm opacity-90 md:text-lg ${showerOpen ? "block" : "hidden"}`}>滝を浴び、岩を登る。{"\n"}渓谷を遡る冒険へ。</p>
             <div className={`mt-3 flex-wrap gap-2 md:mt-4 ${showerOpen ? "flex" : "hidden"}`}>
               {["滝登り", "岩ジャンプ何度でも！", "渓谷探検"].map((t) => (
