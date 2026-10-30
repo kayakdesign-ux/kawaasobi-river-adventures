@@ -4,6 +4,7 @@ import { AccessDialog } from "@/components/AccessDialog";
 import shower from "@/assets/shower-climbing.jpg.asset.json";
 import touring from "@/assets/river-touring.jpg.asset.json";
 import packraft from "@/assets/packraft.jpg.asset.json";
+import jumpIllust from "@/assets/jump-illust.jpg.asset.json";
 import packraftIllust from "@/assets/packraft-illust.jpg.asset.json";
 import kayakIllust from "@/assets/kayak-illust.png.asset.json";
 import shikokuMap from "@/assets/shikoku-map.png.asset.json";
@@ -90,10 +91,9 @@ function Index() {
           <div className="absolute inset-0 bg-[image:var(--hero-overlay)]" />
           <figure className="absolute right-[2.5%] top-[42%] z-20 hidden w-[24%] max-w-[416px] -translate-y-1/2 border-2 border-primary-foreground/80 p-2 shadow-2xl md:block">
             <figcaption className="absolute -top-4 left-5 flex items-baseline gap-2 rounded-full bg-accent px-4 py-1 font-['Zen_Maru_Gothic',sans-serif] font-bold text-primary shadow-lg">
-              <span className="text-xs">初めてでも安定抜群</span>
-              <span className="text-base">パックラフト</span>
+              <span className="text-base">飛ぶこみは何回もできます！！</span>
             </figcaption>
-            <img src={packraft.url} alt="パックラフト" className="block aspect-[16/10] w-full object-cover" />
+            <img src={jumpIllust.url} alt="岩から川へ飛び込む様子" className="block aspect-[4/3] w-full object-cover object-[50%_45%]" />
             <div className="mt-2 flex items-center gap-2 rounded-lg bg-white/50 px-1.5 py-1">
               <div className="h-20 w-36 shrink-0 overflow-hidden rounded-lg md:h-24 md:w-42">
                 <img src={packraftIllust.url} alt="パックラフトのイラスト" loading="lazy" className="h-full w-full scale-150 object-cover" />
@@ -117,8 +117,8 @@ function Index() {
               <span className="font-display text-sm tracking-[0.3em] text-accent">02 — 1.5KM RIVER TOURING</span>
               <span className="-rotate-2 rounded-full bg-accent px-3 py-0.5 font-['Zen_Maru_Gothic',sans-serif] text-xs font-bold text-primary shadow-lg md:text-sm">どのコースも 岩からジャンプは何回でも！</span>
             </div>
-            <h2 className="mt-3 font-display text-4xl leading-tight md:text-7xl">1.5kmツーリング</h2>
-            <p className="mt-4 whitespace-pre-line text-base opacity-90 md:text-xl">透きとおる水面を、{"\n"}ゆったりと下る。</p>
+            <h2 className="mt-3 font-display text-4xl leading-tight md:text-6xl">初めてでも立てる<br />吉野川の緩やかサップ+川遊び</h2>
+            <p className="mt-4 whitespace-pre-line text-base opacity-90 md:text-xl">1.5kmツーリング</p>
             <div className="mt-6 flex flex-wrap gap-2.5 md:gap-3">
               {TOUR_TAGS.map((t) => (
                 <span
