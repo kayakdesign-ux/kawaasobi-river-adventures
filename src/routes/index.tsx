@@ -75,6 +75,11 @@ function Index() {
             <p className="mt-2 text-center text-[10px] tracking-widest text-primary-foreground/80 group-hover/map:text-accent md:text-xs">タップでアクセス・ルート →</p>
           </div>
         </button>
+        <div className="pointer-events-none mt-4 text-primary-foreground">
+          <p className="font-display text-[10px] tracking-[0.5em] opacity-80 md:text-xs">EMERALD RIVER</p>
+          <h1 className="mt-1 whitespace-nowrap font-display text-2xl [text-shadow:0_2px_20px_oklch(0_0_0/0.5)] md:text-4xl">清流ランキング１位</h1>
+        </div>
+        </div>
         <AccessDialog open={accessOpen} onOpenChange={setAccessOpen} />
 
         {/* 1.5kmツーリング — 上3分の3 */}
