@@ -49,12 +49,13 @@ function Index() {
     <main className="bg-background">
       <section className="relative h-screen min-h-[640px] overflow-hidden">
         <header className="absolute inset-x-0 top-0 z-20 flex items-center justify-between gap-2 px-4 py-4 text-primary-foreground md:px-10 md:py-5">
-          <span className="whitespace-nowrap font-display text-lg tracking-widest md:text-2xl">高知県の川遊び<span className="ml-1 text-[10px] opacity-80 md:ml-2 md:text-xs">KAWAASOBI.COM</span></span>
+          <span className="whitespace-nowrap font-display text-lg tracking-widest md:text-2xl">高知｜吉野川の川遊び<span className="ml-1 text-[10px] opacity-80 md:ml-2 md:text-xs">KAWAASOBI.COM</span></span>
           <a href="#reserve" className="whitespace-nowrap rounded-full border border-primary-foreground/60 px-3 py-2 text-sm backdrop-blur-sm transition hover:bg-primary-foreground hover:text-primary md:px-5">ご予約</a>
         </header>
 
         {/* アクセスマップ — 四国の地図と大豊IC */}
-        <button type="button" onClick={() => setAccessOpen(true)} aria-label="アクセス情報とルートを開く" className="group/map absolute left-4 top-16 z-20 w-36 cursor-pointer text-left transition hover:-translate-y-0.5 md:left-10 md:w-64">
+        <div className="absolute left-4 top-16 z-20 w-36 md:left-10 md:w-64">
+        <button type="button" onClick={() => setAccessOpen(true)} aria-label="アクセス情報とルートを開く" className="group/map block w-full cursor-pointer text-left transition hover:-translate-y-0.5">
           <div className="rounded-[1.75rem] rounded-tr-md border border-primary-foreground/25 bg-primary-foreground/10 p-3 shadow-[0_10px_40px_oklch(0_0_0/0.35)] backdrop-blur-md md:rounded-[2.5rem] md:p-4">
             <p className="whitespace-nowrap font-display text-[10px] tracking-[0.3em] text-primary-foreground/85 md:text-xs md:tracking-[0.45em]">ACCESS — 四国</p>
             <div className="relative mt-2">
@@ -74,6 +75,11 @@ function Index() {
             <p className="mt-2 text-center text-[10px] tracking-widest text-primary-foreground/80 group-hover/map:text-accent md:text-xs">タップでアクセス・ルート →</p>
           </div>
         </button>
+        <div className="pointer-events-none mt-4 text-primary-foreground">
+          <p className="font-display text-[10px] tracking-[0.5em] opacity-80 md:text-xs">EMERALD RIVER</p>
+          <h1 className="mt-1 whitespace-nowrap font-display text-2xl [text-shadow:0_2px_20px_oklch(0_0_0/0.5)] md:text-4xl">清流ランキング１位</h1>
+        </div>
+        </div>
         <AccessDialog open={accessOpen} onOpenChange={setAccessOpen} />
 
         {/* 1.5kmツーリング — 上3分の3 */}
@@ -89,9 +95,9 @@ function Index() {
             className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-[image:var(--hero-overlay)]" />
-          <figure className="absolute right-[2.5%] top-[42%] z-20 hidden w-[24%] max-w-[416px] -translate-y-1/2 border-2 border-primary-foreground/80 p-2 shadow-2xl md:block">
-            <figcaption className="absolute -top-4 left-5 flex items-baseline gap-2 rounded-full bg-accent px-4 py-1 font-['Zen_Maru_Gothic',sans-serif] font-bold text-primary shadow-lg">
-              <span className="text-base">飛ぶこみは何回もできます！！</span>
+          <figure className="absolute right-[2.5%] top-[42%] z-20 hidden w-[19.2%] max-w-[333px] -translate-y-1/2 border-2 border-primary-foreground/80 p-2 shadow-2xl md:block">
+            <figcaption className="absolute -top-4 left-5 flex items-baseline gap-2 whitespace-nowrap rounded-full bg-accent px-4 py-1 font-['Zen_Maru_Gothic',sans-serif] font-bold text-primary shadow-lg">
+              <span className="text-base">飛び込みは何回もできます！！</span>
             </figcaption>
             <img src={jumpIllust.url} alt="岩から川へ飛び込む様子" className="block aspect-[4/3] w-full object-cover object-[50%_45%]" />
             <div className="mt-2 flex items-center gap-2 rounded-lg bg-white/50 px-1.5 py-1">
@@ -228,10 +234,6 @@ function Index() {
           </div>
         </div>
 
-        <div className="pointer-events-none absolute left-10 top-[32%] z-[5] hidden -translate-y-1/2 text-primary-foreground md:left-[22rem] md:block">
-          <p className="font-display text-xs tracking-[0.5em] opacity-80">EMERALD RIVER</p>
-          <h1 className="mt-2 font-display text-4xl [text-shadow:0_2px_20px_oklch(0_0_0/0.5)]">清流で、遊ぼう。</h1>
-        </div>
       </section>
     </main>
   );
