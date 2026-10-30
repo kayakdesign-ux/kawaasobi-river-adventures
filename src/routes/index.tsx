@@ -244,7 +244,7 @@ function Index() {
             <div className="flex flex-wrap items-center gap-3">
               <span className="font-display text-sm tracking-[0.3em] text-accent">01 — SHOWER CLIMBING</span>
               <span className="rounded-full bg-accent px-3 py-0.5 font-['Zen_Maru_Gothic',sans-serif] text-xs font-bold text-primary md:text-sm">6歳〜OK</span>
-              <span className="rounded-full bg-background px-3 py-0.5 font-['Zen_Maru_Gothic',sans-serif] text-xs font-bold text-primary md:text-sm">開催期間 4/1〜11/末</span>
+              <span className="rounded-full bg-background px-3 py-0.5 font-['Zen_Maru_Gothic',sans-serif] text-xs font-bold text-primary md:text-sm">開催期間　4月上旬〜11月末</span>
             </div>
             <h2 className="mt-2 font-display text-3xl leading-tight md:text-5xl">シャワークライミング</h2>
             <p className="mt-1 font-['Zen_Maru_Gothic',sans-serif] text-base font-bold md:text-xl">体ひとつで渓流遊び</p>
