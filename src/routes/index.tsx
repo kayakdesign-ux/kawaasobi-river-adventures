@@ -41,6 +41,17 @@ const WAVE_D =
 
 // タグを押すと下にキャッチコピーとイラストが出る
 const TANDEM_SEATS = ["2人乗り 6〜9歳", "1人乗り 10歳〜"];
+// おすすめ時期（月日を 月*100+日 で表す）: この期間はボタンを目立たせる
+export const TOUR_SEASONS: Record<string, [number, number][]> = {
+  サップ: [[601, 930]],
+  パックラフト: [[501, 1010]],
+  カヤック: [[401, 430], [1001, 1130]],
+};
+export function isInSeason(label: string, date: Date) {
+  const md = (date.getMonth() + 1) * 100 + date.getDate();
+  return (TOUR_SEASONS[label] ?? []).some(([a, b]) => md >= a && md <= b);
+}
+
 const TOUR_TAGS = [
   { label: "サップ", catch: "夏のおすすめNo1", icon: illustSup, seats: TANDEM_SEATS },
   { label: "パックラフト", catch: "初めてでも安心パックラフト", icon: illustPackraft, seats: TANDEM_SEATS },
@@ -53,6 +64,8 @@ function Index() {
   const [showerOpen, setShowerOpen] = useState(false);
   // アクセス毎にランダムな写真から始め、滞在中は7秒ごとにクロスフェード
   const [slide, setSlide] = useState(0);
+  const [today, setToday] = useState<Date | null>(null);
+  useEffect(() => setToday(new Date()), []);
   useEffect(() => {
     setSlide(Math.floor(Math.random() * TOURING_SLIDES.length));
     const id = setInterval(() => setSlide((s) => (s + 1) % TOURING_SLIDES.length), 7000);
@@ -128,7 +141,7 @@ function Index() {
                   {it.label}
                 </span>
                 <div className="h-28 w-full overflow-hidden rounded-md">
-                  <img src={it.src} alt={it.alt} loading="lazy" className="h-full w-full scale-150 object-cover" />
+                  <img src={it.src} alt={it.alt} loading="lazy" className="h-full w-full bg-background object-contain" />
                 </div>
               </div>
             ))}
@@ -136,7 +149,7 @@ function Index() {
           <div className={`relative z-10 flex h-full flex-col justify-end p-6 pb-24 text-primary-foreground transition-opacity duration-500 md:p-12 md:pb-24 ${showerOpen ? "pointer-events-none opacity-0" : "opacity-100"}`}>
             <div className="flex flex-wrap items-center gap-3">
               <span className="font-display text-sm tracking-[0.3em] text-accent">02 — 1.5KM RIVER TOURING</span>
-              <span className="-rotate-2 rounded-full bg-accent px-3 py-0.5 font-['Zen_Maru_Gothic',sans-serif] text-xs font-bold text-primary shadow-lg md:text-sm">どのコースも 岩からジャンプは何回でも！</span>
+              <span className="-rotate-2 rounded-full bg-background px-3 py-0.5 font-['Zen_Maru_Gothic',sans-serif] text-xs font-bold text-primary shadow-lg md:text-sm">どのコースも 岩からジャンプは何回でも！</span>
             </div>
             <h2 className="mt-3 font-display text-4xl leading-tight md:text-6xl">初めてでも立てる<br />吉野川の緩やかサップ+川遊び</h2>
             <p className="mt-4 whitespace-pre-line text-base opacity-90 md:text-xl">1.5kmツーリング　親子三代で楽しめる</p>
@@ -159,13 +172,16 @@ function Index() {
                       setActiveTag(activeTag === t.label ? null : t.label);
                     }
                   }}
-                  className={`cursor-pointer select-none rounded-full px-5 py-1.5 text-base backdrop-blur-md transition md:px-6 md:py-2 md:text-lg ${
+                  className={`cursor-pointer select-none rounded-full px-5 ${today && isInSeason(t.label, today) ? "ring-2 ring-accent ring-offset-2 ring-offset-transparent animate-pulse" : ""} py-1.5 text-base backdrop-blur-md transition md:px-6 md:py-2 md:text-lg ${
                     activeTag === t.label
                       ? "bg-accent font-bold text-primary shadow-lg"
                       : "bg-primary-foreground/15 text-primary-foreground hover:bg-primary-foreground/30"
                   }`}
                 >
                   {t.label}
+                  {today && isInSeason(t.label, today) && (
+                    <span className="ml-2 rounded-full bg-background px-2 py-0.5 align-middle font-['Zen_Maru_Gothic',sans-serif] text-xs font-bold text-primary">今が旬！</span>
+                  )}
                 </span>
               ))}
             </div>
@@ -228,7 +244,7 @@ function Index() {
             <div className="flex flex-wrap items-center gap-3">
               <span className="font-display text-sm tracking-[0.3em] text-accent">01 — SHOWER CLIMBING</span>
               <span className="rounded-full bg-accent px-3 py-0.5 font-['Zen_Maru_Gothic',sans-serif] text-xs font-bold text-primary md:text-sm">6歳〜OK</span>
-              <span className="rounded-full bg-background px-3 py-0.5 font-['Zen_Maru_Gothic',sans-serif] text-xs font-bold text-primary md:text-sm">開催期間 7/1〜9/末</span>
+              <span className="rounded-full bg-background px-3 py-0.5 font-['Zen_Maru_Gothic',sans-serif] text-xs font-bold text-primary md:text-sm">開催期間 4/1〜11/末</span>
             </div>
             <h2 className="mt-2 font-display text-3xl leading-tight md:text-5xl">シャワークライミング</h2>
             <p className="mt-1 font-['Zen_Maru_Gothic',sans-serif] text-base font-bold md:text-xl">体ひとつで渓流遊び</p>
