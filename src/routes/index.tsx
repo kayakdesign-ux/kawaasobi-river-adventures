@@ -141,7 +141,7 @@ function Index() {
                   {it.label}
                 </span>
                 <div className="h-28 w-full overflow-hidden rounded-md">
-                  <img src={it.src} alt={it.alt} loading="lazy" className="h-full w-full bg-background object-contain" />
+                  <img src={it.src} alt={it.alt} loading="lazy" className="h-full w-full scale-150 bg-background object-contain" />
                 </div>
               </div>
             ))}
