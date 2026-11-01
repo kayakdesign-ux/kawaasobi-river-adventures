@@ -84,7 +84,7 @@ function Index() {
             onClick={() => setLineOpen(true)}
             className="whitespace-nowrap rounded-full bg-[#06C755] px-3 py-2 text-sm font-bold text-white shadow-lg transition hover:brightness-110 md:px-5"
           >
-            LINEで予約
+            LINEでお問い合わせ
           </button>
         </header>
         <LineReserveDialog open={lineOpen} onOpenChange={setLineOpen} />

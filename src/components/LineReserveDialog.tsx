@@ -211,6 +211,15 @@ export function LineReserveDialog({ open, onOpenChange }: { open: boolean; onOpe
             </select>
           </label>
 
+          <label className="block space-y-1 text-sm font-bold">
+            お名前
+            <Input autoComplete="name" value={name} maxLength={100} onChange={(e) => setName(e.target.value)} />
+          </label>
+          <label className="block space-y-1 text-sm font-bold">
+            電話番号またはメールアドレス
+            <Input autoComplete="email" value={contact} maxLength={255} onChange={(e) => setContact(e.target.value)} />
+          </label>
+
           <pre className="whitespace-pre-wrap rounded-xl bg-muted p-3 font-sans text-sm">{text}</pre>
 
           <div className="flex flex-col gap-2 sm:flex-row">
