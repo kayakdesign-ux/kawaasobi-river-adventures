@@ -71,7 +71,13 @@ function Index() {
   const [today, setToday] = useState<Date | null>(null);
   useEffect(() => setToday(new Date()), []);
   useEffect(() => {
-    setSlide(Math.floor(Math.random() * TOURING_SLIDES.length));
+    // 11月はカヤックの写真から開始し、それ以外はランダム。滞在中は7秒ごとにクロスフェード
+    const now = new Date();
+    const start =
+      now.getMonth() === 10
+        ? TOURING_SLIDES.length - 1
+        : Math.floor(Math.random() * TOURING_SLIDES.length);
+    setSlide(start);
     const id = setInterval(() => setSlide((s) => (s + 1) % TOURING_SLIDES.length), 7000);
     return () => clearInterval(id);
   }, []);
