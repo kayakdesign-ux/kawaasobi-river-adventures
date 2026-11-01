@@ -77,7 +77,7 @@ export function LineReserveDialog({ open, onOpenChange }: { open: boolean; onOpe
     `便：${slot || "未定"}`,
     `コース：${course}`,
     ...groups.map((g) => `${g.title}：${g.fields.map((f) => `${f.label}${c[f.key] ?? 0}人`).join("／")}`),
-    `体重80kg以上：${weight80}人`,
+    ...(course !== "シャワークライミング" ? [`体重80kg以上：${weight80}人`] : []),
     `合計：${total}人`,
     `お名前：${name || "未入力"}`,
     `連絡先：${contact || "未入力"}`,
