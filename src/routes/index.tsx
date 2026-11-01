@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { AccessDialog } from "@/components/AccessDialog";
+import { LineReserveDialog } from "@/components/LineReserveDialog";
 import shower from "@/assets/shower-climbing.jpg";
 import touring from "@/assets/river-touring.jpg";
 import riverBridge from "@/assets/river-bridge.jpg";
@@ -60,6 +61,7 @@ const TOUR_TAGS = [
 
 function Index() {
   const [accessOpen, setAccessOpen] = useState(false);
+  const [lineOpen, setLineOpen] = useState(false);
   const [activeTag, setActiveTag] = useState<string | null>(null);
   const [showerOpen, setShowerOpen] = useState(false);
   // アクセス毎にランダムな写真から始め、滞在中は7秒ごとにクロスフェード
@@ -77,8 +79,15 @@ function Index() {
       <section className="relative h-screen min-h-[640px] overflow-hidden">
         <header className="absolute inset-x-0 top-0 z-20 flex items-center justify-between gap-2 px-4 py-4 text-primary-foreground md:px-10 md:py-5">
           <span className="whitespace-nowrap font-display text-lg tracking-widest md:text-2xl">高知｜吉野川の川遊び<span className="ml-1 text-[10px] opacity-80 md:ml-2 md:text-xs">KAWAASOBI.COM</span></span>
-          <a href="#reserve" className="whitespace-nowrap rounded-full border border-primary-foreground/60 px-3 py-2 text-sm backdrop-blur-sm transition hover:bg-primary-foreground hover:text-primary md:px-5">ご予約</a>
+          <button
+            type="button"
+            onClick={() => setLineOpen(true)}
+            className="whitespace-nowrap rounded-full bg-[#06C755] px-3 py-2 text-sm font-bold text-white shadow-lg transition hover:brightness-110 md:px-5"
+          >
+            LINEで予約
+          </button>
         </header>
+        <LineReserveDialog open={lineOpen} onOpenChange={setLineOpen} />
 
         {/* アクセスマップ — 四国の地図と大豊IC */}
         <div className="absolute left-4 top-16 z-20 w-36 md:left-10 md:w-64">
