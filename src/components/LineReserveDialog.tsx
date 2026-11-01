@@ -10,10 +10,17 @@ const LINE_GREEN = "#06C755";
 const COURSES = ["1.5kmツーリング", "シャワークライミング"] as const;
 
 type Counts = Record<string, number>;
-const GROUPS: { title: string; fields: { key: string; label: string }[] }[] = [
-  { title: "サップ 1人乗り", fields: [{ key: "s1a", label: "大人" }, { key: "s1k", label: "10歳〜16歳" }] },
-  { title: "パックラフト 1人乗り", fields: [{ key: "pa", label: "大人" }, { key: "pk", label: "10歳〜16歳" }] },
-];
+type Group = { title: string; fields: { key: string; label: string }[] };
+const KIDS = "10〜16歳";
+const GROUPS: Record<(typeof COURSES)[number], Group[]> = {
+  "1.5kmツーリング": [
+    { title: "サップ 1人乗り", fields: [{ key: "s1a", label: "大人" }, { key: "s1k", label: KIDS }] },
+    { title: "SUP 2人乗り（大人1名＋未就学1名がセット）", fields: [{ key: "s2a", label: "大人" }, { key: "s2p", label: "未就学" }] },
+    { title: "パックラフト 1人乗り", fields: [{ key: "pa", label: "大人" }, { key: "pk", label: KIDS }] },
+    { title: "カヤック 1人乗り", fields: [{ key: "ka", label: "大人" }, { key: "kk", label: KIDS }] },
+  ],
+  シャワークライミング: [{ title: "シャワークライミング", fields: [{ key: "sha", label: "大人" }, { key: "shk", label: KIDS }] }],
+};
 
 const WD = ["日", "月", "火", "水", "木", "金", "土"];
 
@@ -60,18 +67,19 @@ export function LineReserveDialog({ open, onOpenChange }: { open: boolean; onOpe
   useEffect(() => {
     setDays(buildDays());
   }, []);
-  const total = Object.values(c).reduce((a, b) => a + b, 0);
+  const groups = GROUPS[course];
+  const total = groups.reduce((a, g) => a + g.fields.reduce((b, f) => b + (c[f.key] ?? 0), 0), 0);
 
   const text = [
-    "【空き状況の確認・申込】",
-    `コース：${course}`,
-    `お名前：${name || "未入力"}`,
-    `連絡先：${contact || "未入力"}`,
+    "【空き状況の確認・お問い合わせ】",
     `希望日：${days.find((d) => d.value === date)?.label || "未定"}`,
     `便：${slot || "未定"}`,
-    ...GROUPS.map((g) => `${g.title}：${g.fields.map((f) => `${f.label}${c[f.key] ?? 0}人`).join("／")}`),
+    `コース：${course}`,
+    ...groups.map((g) => `${g.title}：${g.fields.map((f) => `${f.label}${c[f.key] ?? 0}人`).join("／")}`),
     `体重80kg以上：${weight80}人`,
     `合計：${total}人`,
+    `お名前：${name || "未入力"}`,
+    `連絡先：${contact || "未入力"}`,
   ].join("\n");
 
   const lineUrl = `https://line.me/R/oaMessage/${encodeURIComponent(LINE_ID)}/?${encodeURIComponent(text)}`;
@@ -91,7 +99,7 @@ export function LineReserveDialog({ open, onOpenChange }: { open: boolean; onOpe
       <DialogContent className="max-h-[90vh] max-w-2xl gap-0 overflow-y-auto rounded-[2rem] border-primary/20 p-0">
         <DialogHeader className="px-6 py-5 text-left md:px-8" style={{ backgroundColor: LINE_GREEN }}>
           <p className="font-display text-xs tracking-[0.4em] text-white/90">LINE RESERVATION</p>
-          <DialogTitle className="font-display text-2xl tracking-widest text-white">LINEで予約</DialogTitle>
+          <DialogTitle className="font-display text-2xl tracking-widest text-white">LINEでお問い合わせ</DialogTitle>
           <DialogDescription className="text-white/85">空き状況を聞くだけでもOK！入力内容がそのままLINEに送れます</DialogDescription>
         </DialogHeader>
 
@@ -113,32 +121,6 @@ export function LineReserveDialog({ open, onOpenChange }: { open: boolean; onOpe
               </a>
             </div>
           </div>
-
-          {/* コース選択 */}
-          <div className="text-sm">
-            <p className="font-bold">コース</p>
-            <div className="mt-1 grid grid-cols-2 gap-2">
-              {COURSES.map((co) => (
-                <button
-                  key={co}
-                  type="button"
-                  onClick={() => setCourse(co)}
-                  className={`rounded-lg border px-2 py-2 font-bold ${course === co ? "bg-primary text-primary-foreground" : "bg-background"}`}
-                >
-                  {co}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <label className="block space-y-1 text-sm font-bold">
-            お名前
-            <Input autoComplete="name" value={name} maxLength={100} onChange={(e) => setName(e.target.value)} />
-          </label>
-          <label className="block space-y-1 text-sm font-bold">
-            電話番号またはメールアドレス
-            <Input autoComplete="email" value={contact} maxLength={255} onChange={(e) => setContact(e.target.value)} />
-          </label>
 
           {/* 希望日・便 */}
           <div className="text-sm">
@@ -170,8 +152,25 @@ export function LineReserveDialog({ open, onOpenChange }: { open: boolean; onOpe
             </div>
           </div>
 
+          {/* コース選択 */}
+          <div className="text-sm">
+            <p className="font-bold">コース</p>
+            <div className="mt-1 grid grid-cols-2 gap-2">
+              {COURSES.map((co) => (
+                <button
+                  key={co}
+                  type="button"
+                  onClick={() => setCourse(co)}
+                  className={`rounded-lg border px-2 py-2 font-bold ${course === co ? "bg-primary text-primary-foreground" : "bg-background"}`}
+                >
+                  {co}
+                </button>
+              ))}
+            </div>
+          </div>
+
           {/* 人数 */}
-          {GROUPS.map((g) => (
+          {groups.map((g) => (
             <div key={g.title}>
               <p className="text-sm font-bold">{g.title}</p>
               <div className="mt-1 grid grid-cols-2 gap-2">
@@ -210,6 +209,15 @@ export function LineReserveDialog({ open, onOpenChange }: { open: boolean; onOpe
                 </option>
               ))}
             </select>
+          </label>
+
+          <label className="block space-y-1 text-sm font-bold">
+            お名前
+            <Input autoComplete="name" value={name} maxLength={100} onChange={(e) => setName(e.target.value)} />
+          </label>
+          <label className="block space-y-1 text-sm font-bold">
+            電話番号またはメールアドレス
+            <Input autoComplete="email" value={contact} maxLength={255} onChange={(e) => setContact(e.target.value)} />
           </label>
 
           <pre className="whitespace-pre-wrap rounded-xl bg-muted p-3 font-sans text-sm">{text}</pre>
