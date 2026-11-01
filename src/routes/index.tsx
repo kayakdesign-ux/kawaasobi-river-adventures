@@ -5,11 +5,13 @@ import { LineReserveDialog } from "@/components/LineReserveDialog";
 import shower from "@/assets/shower-climbing.jpg";
 import touring from "@/assets/river-touring.jpg";
 import riverBridge from "@/assets/river-bridge.jpg";
+import riverKayak from "@/assets/river-kayak.jpg";
 
 // ツーリング背景の写真（pos は人物が見える位置への調整）
 const TOURING_SLIDES = [
   { src: touring, pos: "object-[50%_70%]" },
   { src: riverBridge, pos: "object-[50%_80%]" },
+  { src: riverKayak, pos: "object-[50%_45%]" },
 ];
 import packraft from "@/assets/packraft.jpg";
 import jumpIllust from "@/assets/jump-illust.jpg";
