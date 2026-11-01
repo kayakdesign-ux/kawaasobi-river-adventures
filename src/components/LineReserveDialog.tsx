@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import lineQr from "@/assets/line-qr.png";
 
 const LINE_ID = "@418xyaym";
+const LINE_PAGE_URL = "https://page.line.me/418xyaym?openQrModal=true";
 const LINE_GREEN = "#06C755";
 
 const COURSES = ["1.5kmツーリング", "シャワークライミング"] as const;
@@ -97,30 +98,24 @@ export function LineReserveDialog({ open, onOpenChange }: { open: boolean; onOpe
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-h-[90vh] max-w-2xl gap-0 overflow-y-auto rounded-[2rem] border-primary/20 p-0">
-        <DialogHeader className="px-6 py-5 text-left md:px-8" style={{ backgroundColor: LINE_GREEN }}>
-          <p className="font-display text-xs tracking-[0.4em] text-white/90">LINE RESERVATION</p>
-          <DialogTitle className="font-display text-2xl tracking-widest text-white">LINEでお問い合わせ</DialogTitle>
-          <DialogDescription className="text-white/85">空き状況を聞くだけでもOK！入力内容がそのままLINEに送れます</DialogDescription>
+        <DialogHeader className="flex flex-row items-center gap-3 space-y-0 px-4 py-3 text-left md:px-6" style={{ backgroundColor: LINE_GREEN }}>
+          <img src={lineQr} alt="公式LINEのQRコード" width={336} height={336} className="h-16 w-16 shrink-0 rounded-lg bg-white p-1" />
+          <div className="min-w-0 flex-1">
+            <DialogTitle className="font-display text-xl tracking-widest text-white">LINEでお問い合わせ</DialogTitle>
+            <DialogDescription className="text-xs text-white/90">空き状況だけでもOK！入力内容をそのままLINEで送れます</DialogDescription>
+          </div>
+          <a
+            href={LINE_PAGE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mr-6 shrink-0 rounded-full bg-white px-3 py-1.5 text-xs font-bold"
+            style={{ color: LINE_GREEN }}
+          >
+            友だち追加
+          </a>
         </DialogHeader>
 
         <div className="space-y-4 p-4 md:p-6">
-          {/* LINE友だち追加 */}
-          <div className="flex items-center gap-4 rounded-2xl border bg-card p-4">
-            <img src={lineQr} alt="公式LINEのQRコード" width={336} height={336} className="h-24 w-24 shrink-0 rounded-lg border" />
-            <div className="text-sm">
-              <p className="font-bold">まずは公式LINEを友だち追加</p>
-              <p className="mt-1 text-muted-foreground">スマホなら下のボタンからすぐ追加できます</p>
-              <a
-                href={`https://line.me/R/ti/p/${encodeURIComponent(LINE_ID)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-2 inline-block rounded-full px-4 py-1.5 text-sm font-bold text-white"
-                style={{ backgroundColor: LINE_GREEN }}
-              >
-                友だち追加
-              </a>
-            </div>
-          </div>
 
           {/* 希望日・便 */}
           <div className="text-sm">
@@ -195,6 +190,7 @@ export function LineReserveDialog({ open, onOpenChange }: { open: boolean; onOpe
             </div>
           ))}
 
+          {course !== "シャワークライミング" && (
           <label className="flex items-center justify-between gap-2 rounded-lg border bg-card p-2 text-sm font-bold">
             体重80kg以上の方は何人いますか？
             <select
@@ -210,6 +206,7 @@ export function LineReserveDialog({ open, onOpenChange }: { open: boolean; onOpe
               ))}
             </select>
           </label>
+          )}
 
           <label className="block space-y-1 text-sm font-bold">
             お名前
