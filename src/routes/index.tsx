@@ -82,7 +82,7 @@ function Index() {
           <button
             type="button"
             onClick={() => setLineOpen(true)}
-            className="whitespace-nowrap rounded-full bg-[#06C755] px-3 py-2 text-sm font-bold text-white shadow-lg transition hover:brightness-110 md:px-5"
+            className="whitespace-nowrap rounded-full bg-[#06C755] px-4 py-2.5 text-base font-bold text-white shadow-xl ring-2 ring-white/70 transition hover:scale-105 hover:brightness-110 md:px-8 md:py-4 md:text-xl"
           >
             LINEでお問い合わせ
           </button>
