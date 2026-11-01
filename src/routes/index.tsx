@@ -5,11 +5,13 @@ import { LineReserveDialog } from "@/components/LineReserveDialog";
 import shower from "@/assets/shower-climbing.jpg";
 import touring from "@/assets/river-touring.jpg";
 import riverBridge from "@/assets/river-bridge.jpg";
+import riverKayak from "@/assets/river-kayak.jpg";
 
 // ツーリング背景の写真（pos は人物が見える位置への調整）
 const TOURING_SLIDES = [
   { src: touring, pos: "object-[50%_70%]" },
   { src: riverBridge, pos: "object-[50%_80%]" },
+  { src: riverKayak, pos: "object-[50%_45%]" },
 ];
 import packraft from "@/assets/packraft.jpg";
 import jumpIllust from "@/assets/jump-illust.jpg";
@@ -69,7 +71,13 @@ function Index() {
   const [today, setToday] = useState<Date | null>(null);
   useEffect(() => setToday(new Date()), []);
   useEffect(() => {
-    setSlide(Math.floor(Math.random() * TOURING_SLIDES.length));
+    // 11月はカヤックの写真から開始し、それ以外はランダム。滞在中は7秒ごとにクロスフェード
+    const now = new Date();
+    const start =
+      now.getMonth() === 10
+        ? TOURING_SLIDES.length - 1
+        : Math.floor(Math.random() * TOURING_SLIDES.length);
+    setSlide(start);
     const id = setInterval(() => setSlide((s) => (s + 1) % TOURING_SLIDES.length), 7000);
     return () => clearInterval(id);
   }, []);
