@@ -11,7 +11,7 @@ import riverKayak from "@/assets/river-kayak.jpg";
 const TOURING_SLIDES = [
   { src: touring, pos: "object-[50%_70%]" },
   { src: riverBridge, pos: "object-[50%_80%]" },
-  { src: riverKayak, pos: "object-[50%_45%]" },
+  { src: riverKayak, pos: "object-[58%_88%] md:object-[50%_45%]" },
 ];
 import packraft from "@/assets/packraft.jpg";
 import jumpIllust from "@/assets/jump-illust.jpg";
@@ -25,12 +25,27 @@ import illustKayak from "@/assets/illust-kayak.png";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "川遊び | シャワークライミング & 1.5kmリバーツーリング" },
-      { name: "description", content: "エメラルドグリーンの清流で、シャワークライミングとサップ・パックラフト・カヤックの1.5kmツーリングを体験。" },
-      { property: "og:title", content: "川遊び | 清流アクティビティ" },
-      { property: "og:description", content: "渓谷を遡るシャワークライミングと、清流を下る1.5kmツーリング。" },
+      { title: "高知・吉野川の川遊び｜シャワークライミング・SUP・カヤック体験 | 大豊町" },
+      { name: "description", content: "高知県大豊町・吉野川の清流で川遊び体験。6歳からOKのシャワークライミング、初めてでも立てるSUP・パックラフト・カヤックの1.5kmツーリング。親子三代で楽しめます。大豊ICから約15分。" },
+      { property: "og:title", content: "高知・吉野川の川遊び｜シャワークライミング・SUP体験" },
+      { property: "og:description", content: "6歳から楽しめるシャワークライミングと、SUP・パックラフト・カヤックの1.5kmツーリング。大豊ICから約15分。" },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://emerald-river-dual-adventures.lovable.app/" },
       { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: "https://emerald-river-dual-adventures.lovable.app/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "TouristAttraction",
+          name: "高知｜吉野川の川遊び",
+          description: "吉野川でのシャワークライミング、SUP・パックラフト・カヤックの1.5kmツーリング体験",
+          address: { "@type": "PostalAddress", addressRegion: "高知県", addressLocality: "長岡郡大豊町", addressCountry: "JP" },
+          touristType: ["ファミリー", "子ども連れ", "初心者"],
+        }),
+      },
     ],
   }),
   component: Index,
@@ -168,7 +183,7 @@ function Index() {
               <span className="font-display text-sm tracking-[0.3em] text-accent">02 — 1.5KM RIVER TOURING</span>
               <span className="-rotate-2 rounded-full bg-background px-3 py-0.5 font-['Zen_Maru_Gothic',sans-serif] text-xs font-bold text-primary shadow-lg md:text-sm">どのコースも 岩からジャンプは何回でも！</span>
             </div>
-            <h2 className="mt-3 font-display text-4xl leading-tight md:text-6xl">初めてでも立てる<br />吉野川の緩やかサップ+川遊び</h2>
+            <h2 className="mt-3 font-display text-3xl leading-tight md:text-6xl">初めてでも立てる<br />吉野川の緩やかサップ+川遊び</h2>
             <p className="mt-4 whitespace-pre-line text-base opacity-90 md:text-xl">1.5kmツーリング　親子三代で楽しめる</p>
             <div className="mt-6 flex flex-wrap gap-2.5 md:gap-3">
               {TOUR_TAGS.map((t) => (
