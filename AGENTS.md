@@ -8,3 +8,6 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep confirmed business identity, address, and starting price in `src/lib/business.ts`, shared by visible information and route JSON-LD to prevent inconsistent representations.
+- Represent the operating corporation as a separate parent organization; describe collaboration without implying sponsorship or guide certification.

@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { AccessDialog } from "@/components/AccessDialog";
 import { LineReserveDialog } from "@/components/LineReserveDialog";
+import { BUSINESS, businessStructuredData } from "@/lib/business";
 import shower from "@/assets/shower-climbing.jpg";
 import touring from "@/assets/river-touring.jpg";
 import riverBridge from "@/assets/river-bridge.jpg";
@@ -25,10 +26,10 @@ import illustKayak from "@/assets/illust-kayak.png";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "高知・吉野川の川遊び｜シャワークライミング・SUP・カヤック体験 | 大豊町" },
-      { name: "description", content: "高知県大豊町・吉野川の清流で川遊び体験。6歳からOKのシャワークライミング、初めてでも立てるSUP・パックラフト・カヤックの1.5kmツーリング。親子三代で楽しめます。大豊ICから約15分。" },
-      { property: "og:title", content: "高知・吉野川の川遊び｜シャワークライミング・SUP体験" },
-      { property: "og:description", content: "6歳から楽しめるシャワークライミングと、SUP・パックラフト・カヤックの1.5kmツーリング。大豊ICから約15分。" },
+      { title: "吉野川のシャワークライミング・SUP初心者体験｜アウトドア！ガルバンゾ・高知県大豊町" },
+      { name: "description", content: "アウトドア！ガルバンゾの高知県大豊町・吉野川の川遊び。6歳からのシャワークライミング、初心者向けSUP・パックラフト・カヤックの1.5kmツーリング。料金5,500円〜。高知県長岡郡大豊町西土居１番地、大豊ICから約15分。" },
+      { property: "og:title", content: "吉野川の川遊び・SUP・シャワークライミング｜アウトドア！ガルバンゾ" },
+      { property: "og:description", content: "高知県大豊町で親子三代の川遊び。6歳からのシャワークライミングと初心者向け1.5kmツーリング。料金5,500円〜、大豊ICから約15分。運営：株式会社リバーランプラス。" },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://emerald-river-dual-adventures.lovable.app/" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -37,14 +38,7 @@ export const Route = createFileRoute("/")({
     scripts: [
       {
         type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "TouristAttraction",
-          name: "高知｜吉野川の川遊び",
-          description: "吉野川でのシャワークライミング、SUP・パックラフト・カヤックの1.5kmツーリング体験",
-          address: { "@type": "PostalAddress", addressRegion: "高知県", addressLocality: "長岡郡大豊町", addressCountry: "JP" },
-          touristType: ["ファミリー", "子ども連れ", "初心者"],
-        }),
+        children: JSON.stringify(businessStructuredData),
       },
     ],
   }),
@@ -300,6 +294,20 @@ function Index() {
         </div>
 
       </section>
+      <footer className="border-t border-border px-6 py-8 text-foreground md:px-10">
+        <div className="mx-auto flex max-w-6xl flex-col gap-5 md:flex-row md:items-start md:justify-between">
+          <div>
+            <p className="font-display text-xl">{BUSINESS.name}</p>
+            <address className="mt-2 text-sm not-italic text-muted-foreground">{BUSINESS.address}</address>
+            <p className="mt-2 font-bold text-primary">川遊び体験 5,500円〜</p>
+          </div>
+          <div className="space-y-2 text-sm text-muted-foreground">
+            <p>運営：{BUSINESS.operator}</p>
+            <p>協力：<a href={BUSINESS.partnerUrl} target="_blank" rel="noreferrer" className="text-primary underline underline-offset-4">{BUSINESS.partner}</a></p>
+            <p>加盟：{BUSINESS.association}</p>
+          </div>
+        </div>
+      </footer>
     </main>
   );
 }

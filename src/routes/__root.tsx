@@ -78,14 +78,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "川遊び KAWAASOBI" },
-      { name: "description", content: "清流アクティビティ" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "川遊び KAWAASOBI" },
-      { property: "og:description", content: "清流アクティビティ" },
+      { property: "og:site_name", content: "アウトドア！ガルバンゾ｜KAWAASOBI.COM" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {

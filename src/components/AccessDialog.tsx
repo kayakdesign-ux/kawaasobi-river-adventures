@@ -1,6 +1,7 @@
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { BUSINESS } from "@/lib/business";
 
-const DESTINATION = "高知県長岡郡大豊町西土居1";
+const DESTINATION = BUSINESS.address;
 
 const ACCESS = [
   { from: "大豊IC", time: "約15分", highlight: true },
@@ -18,11 +19,11 @@ export function AccessDialog({ open, onOpenChange }: { open: boolean; onOpenChan
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-3xl gap-0 overflow-hidden rounded-[2rem] border-primary/20 p-0">
+      <DialogContent className="max-h-[90dvh] max-w-3xl gap-0 overflow-y-auto rounded-[2rem] border-primary/20 p-0">
         <DialogHeader className="bg-primary px-6 py-5 text-left text-primary-foreground md:px-8">
           <p className="font-display text-xs tracking-[0.4em] text-accent">ACCESS</p>
           <DialogTitle className="font-display text-2xl tracking-widest">アクセス・観光地情報</DialogTitle>
-          <DialogDescription className="text-primary-foreground/80">集合場所：西土居1番地（車でのおおよその所要時間）</DialogDescription>
+          <DialogDescription className="text-primary-foreground/80">{BUSINESS.name}<br />集合場所：{DESTINATION}<br />車でのおおよその所要時間</DialogDescription>
         </DialogHeader>
 
         <ul className="grid grid-cols-2 gap-px bg-border md:grid-cols-3">
@@ -33,6 +34,13 @@ export function AccessDialog({ open, onOpenChange }: { open: boolean; onOpenChan
             </li>
           ))}
         </ul>
+
+        <div className="space-y-1 border-t border-border px-6 py-4 text-sm md:px-8">
+          <p className="font-bold text-primary">料金 5,500円〜</p>
+          <p className="text-muted-foreground">運営：{BUSINESS.operator}</p>
+          <p className="text-muted-foreground">協力：<a href={BUSINESS.partnerUrl} target="_blank" rel="noreferrer" className="text-primary underline underline-offset-4">{BUSINESS.partner}</a></p>
+          <p className="text-xs text-muted-foreground">加盟：{BUSINESS.association}</p>
+        </div>
 
         <div className="border-t border-border">
           <div className="flex items-center justify-between px-6 py-3 md:px-8">
