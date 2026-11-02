@@ -1,0 +1,3 @@
+- [x] Reflect confirmed business identity, operator, partner, address, starting price, and JRCA membership in page and access information.
+- [x] Update route search metadata and structured data with the same business information.
+- [ ] Verify price/address tests and the page-to-access-dialog flow.
